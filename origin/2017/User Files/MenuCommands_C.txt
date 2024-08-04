@@ -1,0 +1,5 @@
+[Ver]
+33
+[WksPlotMenuMRUList]
+Version = 2
+1 = {"33250","","µ„œﬂÕº(L)"}
