@@ -1,0 +1,65 @@
+A51 MACRO ASSEMBLER  ____164                                                              05/11/2023 15:37:39 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\串行164.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE 串行164.ASM SET(SMALL) DEBUG PRINT(.\Listings\串行164.lst) OBJECT(.\Obj
+                      ects\串行164.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 00H
+0000 0105              2             AJMP START
+0003                   3     ORG 0003H
+0003 011B              4             AJMP INT
+0005 758160            5             START: MOV SP,#60H
+0008 759800            6             MOV SCON,#00H
+000B D288              7             SETB IT0
+000D D2AF              8             SETB EA
+000F D2A8              9             SETB EX0
+0011 90002F           10             MOV DPTR,#TABLE
+0014 7599FF           11             MOV SBUF,#0FFH
+0017 C299             12             LP:CLR TI
+0019 0117             13             AJMP LP
+001B 7400             14             INT:MOV A,#00H
+001D 93               15             MOVC A,@A + DPTR
+001E F599             16             MOV SBUF,A
+0020 1099FD           17             LP1:JBC TI,LP1
+0023 A3               18             INC DPTR
+0024 7400             19             MOV A,#00H
+0026 93               20             MOVC A,@A + DPTR
+0027 B41B03           21             CJNE A,#1BH,LP2
+002A 90002F           22             MOV DPTR,#TABLE
+002D 00               23             LP2:NOP
+002E 32               24             RETI
+002F FEFDFBF7         25             TABLE:DB 0FEH,0FDH,0FBH,0F7H
+0033 EFDFBF7F         26                     DB 0EFH,0DFH,0BFH,7FH,1BH
+0037 1B                      
+                      27                     END
+A51 MACRO ASSEMBLER  ____164                                                              05/11/2023 15:37:39 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+EA . . . . . . . .  B ADDR   00A8H.7 A   
+EX0. . . . . . . .  B ADDR   00A8H.0 A   
+INT. . . . . . . .  C ADDR   001BH   A   
+IT0. . . . . . . .  B ADDR   0088H.0 A   
+LP . . . . . . . .  C ADDR   0017H   A   
+LP1. . . . . . . .  C ADDR   0020H   A   
+LP2. . . . . . . .  C ADDR   002DH   A   
+SBUF . . . . . . .  D ADDR   0099H   A   
+SCON . . . . . . .  D ADDR   0098H   A   
+SP . . . . . . . .  D ADDR   0081H   A   
+START. . . . . . .  C ADDR   0005H   A   
+TABLE. . . . . . .  C ADDR   002FH   A   
+TI . . . . . . . .  B ADDR   0098H.1 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

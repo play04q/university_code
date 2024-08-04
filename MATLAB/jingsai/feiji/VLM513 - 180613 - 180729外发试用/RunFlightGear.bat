@@ -1,0 +1,2 @@
+set FG_PATH=G:\FlightGear 2016.2.1
+"%FG_PATH%\bin\fgfs.exe" "--fg-root=%FG_PATH%/data/" "--geometry=800x600" --fdm=network,localhost,5501,5502,5503 --roll=0 --pitch=0 --wind=0@0 --turbulence=0.0 --prop:/sim/frame-rate-throttle-hz=30 --timeofday=noon --airport=KCCR --runway=01L --prop:input/joysticks/js=0 --aircraft=C172P"

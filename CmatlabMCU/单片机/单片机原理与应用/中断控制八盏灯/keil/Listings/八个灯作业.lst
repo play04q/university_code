@@ -1,0 +1,74 @@
+C51 COMPILER V9.54   __________                                                            04/27/2023 20:58:16 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE __________
+OBJECT MODULE PLACED IN .\Objects\八个灯作业.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE 八个灯作业.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listing
+                    -s\八个灯作业.lst) TABS(2) OBJECT(.\Objects\八个灯作业.obj)
+
+line level    source
+
+   1          #include <REGX51.H>
+   2          const tab1[]={0xff,0x00,0xff,0x00,0xff,0x00,
+   3                        0xff,0x00,0xff,0x00,0xff,0x00,};
+   4          const tab2[]={0xfe,0xfd,0xfb,0xf7,0xef,0xdf,0xbf,0x7f,
+   5                        0xfe,0xfd,0xfb,0xf7,0xef,0xdf,0xbf,0x7f,
+   6                        0xfe,0xfd,0xfb,0xf7,0xef,0xdf,0xbf,0x7f,
+   7                        0xfe,0xfd,0xfb,0xf7,0xef,0xdf,0xbf,0x7f,};
+   8          char a;
+   9          void delay()
+  10          {
+  11   1        int i,j;
+  12   1        for(i=0;i<256;i++)
+  13   1        for(j=0;j<256;j++)
+  14   1        {;}
+  15   1      }
+  16          void int0() interrupt 0
+  17          {
+  18   1          char i;
+  19   1          for(i=0;i<13;i++)
+  20   1          {
+  21   2            P0=tab1[i];
+  22   2            delay();
+  23   2          }
+  24   1      }
+  25          void int1() interrupt 2
+  26          {
+  27   1        char i;
+  28   1        for(i=0;i<32;i++)
+  29   1        {
+  30   2          P0=tab2[i];
+  31   2          delay();
+  32   2        }
+  33   1      }
+  34          void main()
+  35          {
+  36   1        IE=0x85;
+  37   1        IP=0x01;
+  38   1        TCON=0x00;
+  39   1        while(1)
+  40   1        {
+  41   2          char x;
+  42   2          for(x=0;x<23;x++)
+  43   2          {
+  44   3            P0=~P0;
+  45   3            delay();
+  46   3          }
+  47   2        }
+  48   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    174    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+C51 COMPILER V9.54   __________                                                            04/27/2023 20:58:16 PAGE 2   
+
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     89       1
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

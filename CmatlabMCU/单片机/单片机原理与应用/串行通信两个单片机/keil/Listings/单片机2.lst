@@ -1,0 +1,49 @@
+A51 MACRO ASSEMBLER  ______2                                                              05/04/2023 20:09:17 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\单片机2.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE 单片机2.ASM SET(SMALL) DEBUG PRINT(.\Listings\单片机2.lst) OBJECT(.\Obj
+                      ects\单片机2.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 00H
+0000 0102              2             AJMP START
+0002 759850            3             START:MOV SCON,#50H
+0005 758920            4             MOV TMOD,#20H
+0008 758DFA            5             MOV TH1,#0FAH
+000B 758BFA            6             MOV TL1,#0FAH
+000E D28E              7             SETB TR1
+0010 209802            8             READ:JB RI,UART
+0013 0110              9             AJMP READ
+0015 E599             10             UART:MOV A,SBUF
+0017 F590             11             MOV P1,A
+0019 C298             12             CLR RI
+001B 0110             13             AJMP READ
+                      14     END
+A51 MACRO ASSEMBLER  ______2                                                              05/04/2023 20:09:17 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+P1 . . . . . . . .  D ADDR   0090H   A   
+READ . . . . . . .  C ADDR   0010H   A   
+RI . . . . . . . .  B ADDR   0098H.0 A   
+SBUF . . . . . . .  D ADDR   0099H   A   
+SCON . . . . . . .  D ADDR   0098H   A   
+START. . . . . . .  C ADDR   0002H   A   
+TH1. . . . . . . .  D ADDR   008DH   A   
+TL1. . . . . . . .  D ADDR   008BH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR1. . . . . . . .  B ADDR   0088H.6 A   
+UART . . . . . . .  C ADDR   0015H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

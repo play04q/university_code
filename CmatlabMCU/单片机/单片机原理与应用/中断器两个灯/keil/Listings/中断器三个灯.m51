@@ -1,0 +1,47 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        04/20/2023  17:03:51  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\三个灯.obj TO .\Objects\中断器三个灯 PRINT (.\Listings\中断器三个灯.m51)
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\三个灯.obj (______)
+
+
+LINK MAP OF MODULE:  .\Objects\中断器三个灯 (______)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     010FH     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\中断器三个灯 (______)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ______
+  B:00A8H.7       SYMBOL        EA
+  B:00A8H.1       SYMBOL        ET0
+  C:010EH         SYMBOL        EXIT
+  C:0100H         SYMBOL        LIGHT
+  C:0030H         SYMBOL        MAIN
+  D:0080H         SYMBOL        P0
+  D:0090H         SYMBOL        P1
+  D:0081H         SYMBOL        SP
+  D:008CH         SYMBOL        TH0
+  D:008AH         SYMBOL        TL0
+  D:0089H         SYMBOL        TMOD
+  B:0088H.4       SYMBOL        TR0
+  -------         ENDMOD        ______
+
+Program Size: data=8.0 xdata=0 code=271
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

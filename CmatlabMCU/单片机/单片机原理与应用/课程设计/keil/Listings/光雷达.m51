@@ -1,0 +1,278 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        06/07/2023  17:05:11  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\光雷达课设.obj TO .\Objects\光雷达 PRINT (.\Listings\光雷达.m51)
+
+
+MEMORY MODEL: SMALL WITH FLOATING POINT ARITHMETIC
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\光雷达课设.obj (__________)
+  C:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FPMUL)
+  C:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FPDIV)
+  C:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FCAST)
+  C:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?CASTF)
+  C:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FPGETOPN)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?IMUL)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?UIDIV)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?LNEG)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  .\Objects\光雷达 (__________)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     000AH     UNIT         ?DT?__________
+            DATA    0012H     0003H     UNIT         _DATA_GROUP_
+            IDATA   0015H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0003H     UNIT         ?PR?INT1?__________
+                    0006H     0005H                  *** GAP ***
+            CODE    000BH     0003H     ABSOLUTE     
+            CODE    000EH     02DAH     UNIT         ?C?LIB_CODE
+            CODE    02E8H     01B9H     UNIT         ?PR?MAIN?__________
+            CODE    04A1H     008CH     UNIT         ?C_C51STARTUP
+            CODE    052DH     000DH     UNIT         ?PR?ARMF?__________
+            CODE    053AH     000DH     UNIT         ?C_INITSEG
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\光雷达 (__________)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?__________
+  +--> ?C_INITSEG
+
+?PR?MAIN?__________            0012H    0003H
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      06/07/2023  17:05:11  PAGE 2
+
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\光雷达 (__________)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        __________
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00A8H         PUBLIC        IE
+  B:0080H.3       PUBLIC        clock
+  B:0090H.1       PUBLIC        P1_1
+  B:0080H.4       PUBLIC        l1
+  B:0098H.1       PUBLIC        TI
+  B:0080H.5       PUBLIC        l2
+  B:0080H.6       PUBLIC        l3
+  B:0080H.7       PUBLIC        l4
+  B:0090H.0       PUBLIC        safe
+  C:02E8H         PUBLIC        main
+  C:052DH         PUBLIC        armf
+  B:0080H.0       PUBLIC        start
+  D:0099H         PUBLIC        SBUF
+  D:0098H         PUBLIC        SCON
+  D:0089H         PUBLIC        TMOD
+  D:0008H         PUBLIC        tab
+  B:0080H.2       PUBLIC        eoc
+  B:0090H.2       PUBLIC        arm
+  D:008CH         PUBLIC        TH0
+  D:008AH         PUBLIC        TL0
+  B:0080H.1       PUBLIC        oe
+  B:0088H.4       PUBLIC        TR0
+  C:0003H         PUBLIC        int1
+  -------         PROC          INT1
+  C:0003H         LINE#         14
+  C:0003H         LINE#         16
+  C:0005H         LINE#         17
+  -------         ENDPROC       INT1
+  -------         PROC          ARMF
+  C:052DH         LINE#         18
+  C:052DH         LINE#         19
+  C:052DH         LINE#         20
+  C:0530H         LINE#         21
+  C:0530H         LINE#         22
+  C:0532H         LINE#         23
+  C:0534H         LINE#         24
+  C:0535H         LINE#         26
+  C:0535H         LINE#         27
+  C:0537H         LINE#         28
+  C:0539H         LINE#         29
+  C:0539H         LINE#         30
+  -------         ENDPROC       ARMF
+  -------         PROC          MAIN
+  -------         DO            
+  D:0012H         SYMBOL        date
+BL51 BANKED LINKER/LOCATER V6.22                                                      06/07/2023  17:05:11  PAGE 3
+
+
+  D:0013H         SYMBOL        miwei
+  D:0004H         SYMBOL        ddate
+  D:0003H         SYMBOL        qw
+  D:0002H         SYMBOL        bw
+  D:0007H         SYMBOL        sw
+  D:0006H         SYMBOL        gw
+  D:0014H         SYMBOL        i
+  -------         ENDDO         
+  C:02E8H         LINE#         31
+  C:02E8H         LINE#         32
+  C:02E8H         LINE#         34
+  C:02EBH         LINE#         39
+  C:02EEH         LINE#         40
+  C:02F6H         LINE#         41
+  C:02F9H         LINE#         42
+  C:02FCH         LINE#         43
+  C:02FEH         LINE#         45
+  C:0301H         LINE#         46
+  C:0304H         LINE#         47
+  C:0307H         LINE#         48
+  C:030AH         LINE#         49
+  C:030CH         LINE#         50
+  C:030CH         LINE#         51
+  C:030CH         LINE#         52
+  C:030EH         LINE#         53
+  C:0310H         LINE#         54
+  C:0312H         LINE#         55
+  C:031CH         LINE#         56
+  C:031FH         LINE#         57
+  C:0323H         LINE#         58
+  C:0326H         LINE#         59
+  C:0328H         LINE#         60
+  C:032EH         LINE#         61
+  C:0351H         LINE#         62
+  C:0356H         LINE#         63
+  C:0361H         LINE#         64
+  C:037DH         LINE#         65
+  C:03A7H         LINE#         66
+  C:03C6H         LINE#         67
+  C:03C9H         LINE#         68
+  C:03C9H         LINE#         69
+  C:03CBH         LINE#         70
+  C:03D1H         LINE#         71
+  C:03D4H         LINE#         72
+  C:03D6H         LINE#         73
+  C:03E0H         LINE#         74
+  C:03E2H         LINE#         75
+  C:03E4H         LINE#         77
+  C:03E4H         LINE#         78
+  C:03E6H         LINE#         79
+  C:03E9H         LINE#         80
+  C:03ECH         LINE#         81
+  C:03EEH         LINE#         82
+  C:03F8H         LINE#         83
+  C:03FAH         LINE#         84
+  C:03FAH         LINE#         85
+  C:03FDH         LINE#         86
+BL51 BANKED LINKER/LOCATER V6.22                                                      06/07/2023  17:05:11  PAGE 4
+
+
+  C:03FDH         LINE#         87
+  C:0400H         LINE#         88
+  C:0400H         LINE#         89
+  C:0402H         LINE#         90
+  C:0408H         LINE#         91
+  C:040BH         LINE#         92
+  C:040DH         LINE#         93
+  C:0417H         LINE#         94
+  C:0419H         LINE#         95
+  C:041BH         LINE#         97
+  C:041BH         LINE#         98
+  C:041DH         LINE#         99
+  C:0420H         LINE#         100
+  C:0423H         LINE#         101
+  C:0425H         LINE#         102
+  C:042FH         LINE#         103
+  C:0431H         LINE#         104
+  C:0431H         LINE#         105
+  C:0434H         LINE#         106
+  C:0434H         LINE#         107
+  C:0437H         LINE#         108
+  C:0437H         LINE#         109
+  C:0439H         LINE#         110
+  C:043FH         LINE#         111
+  C:0442H         LINE#         112
+  C:0444H         LINE#         113
+  C:044EH         LINE#         114
+  C:0450H         LINE#         115
+  C:0452H         LINE#         117
+  C:0452H         LINE#         118
+  C:0454H         LINE#         119
+  C:0457H         LINE#         120
+  C:045AH         LINE#         121
+  C:045CH         LINE#         122
+  C:0466H         LINE#         123
+  C:0468H         LINE#         124
+  C:0468H         LINE#         125
+  C:0468H         LINE#         126
+  C:046AH         LINE#         128
+  C:046AH         LINE#         129
+  C:046CH         LINE#         130
+  C:0473H         LINE#         131
+  C:0476H         LINE#         132
+  C:0478H         LINE#         133
+  C:0482H         LINE#         134
+  C:0484H         LINE#         135
+  C:0484H         LINE#         136
+  C:0486H         LINE#         137
+  C:048DH         LINE#         138
+  C:0490H         LINE#         139
+  C:0492H         LINE#         140
+  C:049CH         LINE#         141
+  C:049EH         LINE#         142
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        __________
+
+  -------         MODULE        ?C?FPMUL
+BL51 BANKED LINKER/LOCATER V6.22                                                      06/07/2023  17:05:11  PAGE 5
+
+
+  C:000EH         PUBLIC        ?C?FPMUL
+  -------         ENDMOD        ?C?FPMUL
+
+  -------         MODULE        ?C?FPDIV
+  C:0117H         PUBLIC        ?C?FPDIV
+  -------         ENDMOD        ?C?FPDIV
+
+  -------         MODULE        ?C?FCAST
+  C:01BEH         PUBLIC        ?C?FCASTC
+  C:01B9H         PUBLIC        ?C?FCASTI
+  C:01B4H         PUBLIC        ?C?FCASTL
+  -------         ENDMOD        ?C?FCAST
+
+  -------         MODULE        ?C?CASTF
+  C:01F2H         PUBLIC        ?C?CASTF
+  -------         ENDMOD        ?C?CASTF
+
+  -------         MODULE        ?C?IMUL
+  C:0273H         PUBLIC        ?C?IMUL
+  -------         ENDMOD        ?C?IMUL
+
+  -------         MODULE        ?C?UIDIV
+  C:0285H         PUBLIC        ?C?UIDIV
+  -------         ENDMOD        ?C?UIDIV
+
+  -------         MODULE        ?C?LNEG
+  C:02DAH         PUBLIC        ?C?LNEG
+  -------         ENDMOD        ?C?LNEG
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?ARMF?__________
+
+Program Size: data=22.0 xdata=0 code=1346
+LINK/LOCATE RUN COMPLETE.  1 WARNING(S),  0 ERROR(S)

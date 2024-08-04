@@ -1,0 +1,3 @@
+".\Objects\单片机1.obj" 
+TO ".\Objects\单片机1" 
+PRINT(".\Listings\单片机1.m51")

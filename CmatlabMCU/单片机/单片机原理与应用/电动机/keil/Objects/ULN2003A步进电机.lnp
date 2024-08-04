@@ -1,0 +1,3 @@
+".\Objects\步进电机.obj" 
+TO ".\Objects\ULN2003A步进电机" 
+PRINT(".\Listings\ULN2003A步进电机.m51")

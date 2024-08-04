@@ -1,0 +1,43 @@
+C51 COMPILER V9.54   ____U1                                                                06/08/2023 22:15:02 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE ____U1
+OBJECT MODULE PLACED IN .\Objects\量子U1.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE 量子U1.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\量
+                    -子U1.lst) TABS(2) OBJECT(.\Objects\量子U1.obj)
+
+line level    source
+
+   1          #include <REGX51.H>
+   2          void main()
+   3          {
+   4   1        char i=0;
+   5   1        SCON=0x40;
+   6   1        TMOD=0x20;
+   7   1        TH1=0xFA;
+   8   1        TL1=0xFA;
+   9   1        TR1=1;
+  10   1        P1=0xff;
+  11   1        while(1)
+  12   1        {
+  13   2          while(P1==i);
+  14   2          i=P1;
+  15   2          SBUF=i;
+  16   2          while(TI==0);
+  17   2          TI=0;
+  18   2        }
+  19   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     35    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

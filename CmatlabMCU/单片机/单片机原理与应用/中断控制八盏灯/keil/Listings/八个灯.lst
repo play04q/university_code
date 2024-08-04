@@ -1,0 +1,115 @@
+A51 MACRO ASSEMBLER  ______                                                               04/26/2023 21:49:28 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\°Ë¸öµÆ.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE °Ë¸öµÆ.ASM SET(SMALL) DEBUG PRINT(.\Listings\°Ë¸öµÆ.lst) OBJECT(.\Objec
+                      ts\°Ë¸öµÆ.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0000H
+0000 0115              2             AJMP START
+0003                   3     ORG 0003H
+0003 0136              4             AJMP INTR0
+0013                   5     ORG 0013H
+0013 0177              6             AJMP INTR1
+0015 75A885            7             START:MOV IE,#85H
+0018 75B804            8             MOV IP,#04H
+001B 758800            9             MOV TCON,#00H
+001E 758160           10             MOV SP,#60H
+0021 7580FF           11             MOV P0,#0FFH
+0024 7590FF           12             MOV P1,#0FFH
+0027 75B0FF           13             MOV P3,#0FFH
+002A 7800             14             MOV R0, #00H
+002C 7400             15             MOV A,#00H
+002E F580             16             LP1:MOV P0,A
+0030 12007F           17             LCALL DELAY
+0033 F4               18             CPL A
+0034 80F8             19             SJMP LP1
+0036 C0E0             20             INTR0:PUSH ACC
+0038 C0D0             21             PUSH PSW
+003A 08               22             INC R0
+003B 7401             23             MOV A,#01H
+003D 58               24             ANL A,R0
+003E 30D011           25             JNB PSW.0,DOUBLE
+0041 758000           26             MOV P0,#00H
+0044 740F             27             MOV A,#0FH
+0046 7C03             28             MOV R4,#03H
+0048 F580             29             SINGLE:MOV P0,A
+004A 12007F           30             LCALL DELAY
+004D C4               31             SWAP A
+004E DCF8             32             DJNZ R4,SINGLE
+0050 0171             33             AJMP EXIT
+0052 7580FF           34             DOUBLE:MOV P0,#0FFH
+0055 7902             35             MOV R1,#02H
+0057 74FE             36             DOUBLE1:MOV A,#0FEH
+0059 7A08             37             MOV R2,#08H
+005B F580             38             LP2:MOV P0,A
+005D 23               39             RL A
+005E 12007F           40             LCALL DELAY
+0061 DAF8             41             DJNZ R2,LP2
+0063 7407             42             MOV A,#07H
+0065 7A08             43             MOV R2,#08H
+0067 F580             44             LP3:MOV P0,A
+0069 12007F           45             LCALL DELAY
+006C 03               46             RR A
+006D DAF8             47             DJNZ R2,LP3
+006F D9E6             48             DJNZ R1,DOUBLE1
+0071 00               49             EXIT:NOP
+0072 D0D0             50             POP PSW
+0074 D0E0             51             POP ACC
+0076 32               52             RETI
+0077 C290             53             INTR1:CLR P1.0
+0079 12007F           54             LCALL DELAY
+007C D290             55             SETB P1.0
+007E 32               56             RETI
+007F 7F14             57             DELAY:MOV R7,#20
+A51 MACRO ASSEMBLER  ______                                                               04/26/2023 21:49:28 PAGE     2
+
+0081 7E14             58             DELA1:MOV R6,#20
+0083 7DF8             59             DELA2:MOV R5,#248
+0085 DDFE             60             DJNZ R5,$
+0087 DEFA             61             DJNZ R6,DELA2
+0089 DFF6             62             DJNZ R7,DELA1
+008B 22               63             RET
+                      64     END
+                                     
+                                     
+                                     
+A51 MACRO ASSEMBLER  ______                                                               04/26/2023 21:49:28 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+ACC. . . . . . . .  D ADDR   00E0H   A   
+DELA1. . . . . . .  C ADDR   0081H   A   
+DELA2. . . . . . .  C ADDR   0083H   A   
+DELAY. . . . . . .  C ADDR   007FH   A   
+DOUBLE . . . . . .  C ADDR   0052H   A   
+DOUBLE1. . . . . .  C ADDR   0057H   A   
+EXIT . . . . . . .  C ADDR   0071H   A   
+IE . . . . . . . .  D ADDR   00A8H   A   
+INTR0. . . . . . .  C ADDR   0036H   A   
+INTR1. . . . . . .  C ADDR   0077H   A   
+IP . . . . . . . .  D ADDR   00B8H   A   
+LP1. . . . . . . .  C ADDR   002EH   A   
+LP2. . . . . . . .  C ADDR   005BH   A   
+LP3. . . . . . . .  C ADDR   0067H   A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+P3 . . . . . . . .  D ADDR   00B0H   A   
+PSW. . . . . . . .  D ADDR   00D0H   A   
+SINGLE . . . . . .  C ADDR   0048H   A   
+SP . . . . . . . .  D ADDR   0081H   A   
+START. . . . . . .  C ADDR   0015H   A   
+TCON . . . . . . .  D ADDR   0088H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

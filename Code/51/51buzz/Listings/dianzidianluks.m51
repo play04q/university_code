@@ -1,0 +1,169 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        02/23/2023  19:31:08  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\dongfanghong.obj, .\Objects\ykkzldx.obj TO .\Objects\dianzidianluks PRINT (.\Listi
+>> ngs\dianzidianluks.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\dongfanghong.obj (DONGFANGHONG)
+  .\Objects\ykkzldx.obj (YKKZLDX)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?ULCMP)
+
+
+LINK MAP OF MODULE:  .\Objects\dianzidianluks (DONGFANGHONG)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0008H     UNIT         _DATA_GROUP_
+            DATA    0010H     0003H     UNIT         ?DT?DONGFANGHONG
+            IDATA   0013H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     0008H                  *** GAP ***
+            CODE    000BH     0003H     ABSOLUTE     
+            CODE    000EH     00B6H     UNIT         ?CO?DONGFANGHONG
+            CODE    00C4H     0048H     UNIT         ?PR?_DELAY?DONGFANGHONG
+            CODE    010CH     0047H     UNIT         ?PR?MAIN?DONGFANGHONG
+            CODE    0153H     0011H     UNIT         ?C?LIB_CODE
+            CODE    0164H     000DH     UNIT         ?PR?T0INT?DONGFANGHONG
+            CODE    0171H     000DH     UNIT         ?PR?SING?DONGFANGHONG
+            CODE    017EH     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\dianzidianluks (DONGFANGHONG)
+
+
+SEGMENT                           DATA_GROUP 
+  +--> CALLED SEGMENT           START    LENGTH
+-----------------------------------------------
+?C_C51STARTUP                   -----    -----
+  +--> ?PR?MAIN?DONGFANGHONG
+
+?PR?MAIN?DONGFANGHONG           0008H    0002H
+  +--> ?CO?DONGFANGHONG
+  +--> ?PR?SING?DONGFANGHONG
+
+?PR?SING?DONGFANGHONG           -----    -----
+  +--> ?PR?_DELAY?DONGFANGHONG
+
+?PR?_DELAY?DONGFANGHONG         000AH    0006H
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/23/2023  19:31:08  PAGE 2
+
+
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\dianzidianluks (DONGFANGHONG)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        DONGFANGHONG
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  B:00A8H.7       PUBLIC        EA
+  D:00A8H         PUBLIC        IE
+  C:00C4H         PUBLIC        _delay
+  D:00B8H         PUBLIC        IP
+  D:0010H         PUBLIC        timer0H
+  B:00A0H.5       PUBLIC        beep
+  D:0011H         PUBLIC        timer0L
+  C:010CH         PUBLIC        main
+  D:0012H         PUBLIC        time
+  C:0171H         PUBLIC        sing
+  D:0098H         PUBLIC        SCON
+  D:0089H         PUBLIC        TMOD
+  D:0088H         PUBLIC        TCON
+  C:0046H         PUBLIC        song
+  B:00A8H.1       PUBLIC        ET0
+  D:008CH         PUBLIC        TH0
+  D:008AH         PUBLIC        TL0
+  B:0088H.4       PUBLIC        TR0
+  D:00C8H         PUBLIC        T2CON
+  C:0164H         PUBLIC        t0int
+  C:000EH         PUBLIC        FREQH
+  D:00D0H         PUBLIC        PSW
+  C:002AH         PUBLIC        FREQL
+  -------         PROC          T0INT
+  C:0164H         LINE#         27
+  C:0164H         LINE#         29
+  C:0166H         LINE#         30
+  C:0168H         LINE#         31
+  C:016BH         LINE#         32
+  C:016EH         LINE#         33
+  C:0170H         LINE#         34
+  -------         ENDPROC       T0INT
+  -------         PROC          _DELAY
+  D:000AH         SYMBOL        t
+  -------         DO            
+  D:000BH         SYMBOL        t1
+  D:000CH         SYMBOL        t2
+  -------         ENDDO         
+  C:00C4H         LINE#         36
+  C:00C6H         LINE#         37
+  C:00C6H         LINE#         40
+  C:00D0H         LINE#         41
+  C:0109H         LINE#         42
+  C:010BH         LINE#         43
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/23/2023  19:31:08  PAGE 3
+
+
+  -------         ENDPROC       _DELAY
+  -------         PROC          SING
+  C:0171H         LINE#         45
+  C:0171H         LINE#         46
+  C:0171H         LINE#         47
+  C:0174H         LINE#         48
+  C:0177H         LINE#         49
+  C:0179H         LINE#         50
+  -------         ENDPROC       SING
+  -------         PROC          MAIN
+  -------         DO            
+  D:0008H         SYMBOL        k
+  D:0009H         SYMBOL        i
+  -------         ENDDO         
+  C:010CH         LINE#         53
+  C:010CH         LINE#         54
+  C:010CH         LINE#         56
+  C:010FH         LINE#         57
+  C:0111H         LINE#         58
+  C:0113H         LINE#         59
+  C:0113H         LINE#         60
+  C:0113H         LINE#         61
+  C:0116H         LINE#         62
+  C:0119H         LINE#         63
+  C:011DH         LINE#         64
+  C:011DH         LINE#         65
+  C:0132H         LINE#         66
+  C:0138H         LINE#         67
+  C:0140H         LINE#         68
+  C:0148H         LINE#         69
+  C:014EH         LINE#         70
+  C:0151H         LINE#         71
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        DONGFANGHONG
+
+  -------         MODULE        YKKZLDX
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  -------         ENDMOD        YKKZLDX
+
+  -------         MODULE        ?C?ULCMP
+  C:0153H         PUBLIC        ?C?ULCMP
+  -------         ENDMOD        ?C?ULCMP
+
+Program Size: data=20.0 xdata=0 code=386
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

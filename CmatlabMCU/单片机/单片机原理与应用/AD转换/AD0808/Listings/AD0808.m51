@@ -1,0 +1,218 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        06/19/2023  09:26:04  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\AD0808.obj TO .\Objects\AD0808 PRINT (.\Listings\AD0808.m51)
+
+
+MEMORY MODEL: SMALL WITH FLOATING POINT ARITHMETIC
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\AD0808.obj (AD0808)
+  C:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FPMUL)
+  C:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FPDIV)
+  C:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FCAST)
+  C:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?CASTF)
+  C:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FPGETOPN)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?SCDIV)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?IMUL)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?SIDIV)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?LNEG)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?UIDIV)
+
+
+LINK MAP OF MODULE:  .\Objects\AD0808 (AD0808)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0002H     UNIT         _DATA_GROUP_
+            IDATA   000AH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0003H     UNIT         ?PR?INT1?AD0808
+                    0006H     0005H                  *** GAP ***
+            CODE    000BH     0003H     ABSOLUTE     
+            CODE    000EH     0332H     UNIT         ?C?LIB_CODE
+            CODE    0340H     0155H     UNIT         ?PR?MAIN?AD0808
+            CODE    0495H     000CH     UNIT         ?C_C51STARTUP
+            CODE    04A1H     0009H     UNIT         ?CO?AD0808
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\AD0808 (AD0808)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?AD0808
+
+?PR?MAIN?AD0808                0008H    0002H
+  +--> ?CO?AD0808
+
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      06/19/2023  09:26:04  PAGE 2
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\AD0808 (AD0808)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        AD0808
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00A8H         PUBLIC        IE
+  B:00A0H.4       PUBLIC        clock
+  C:0340H         PUBLIC        main
+  B:00A0H.5       PUBLIC        start
+  D:0089H         PUBLIC        TMOD
+  C:04A1H         PUBLIC        tab
+  B:00A0H.6       PUBLIC        eoc
+  D:008CH         PUBLIC        TH0
+  D:008AH         PUBLIC        TL0
+  B:00A0H.1       PUBLIC        p21
+  B:00A0H.2       PUBLIC        p22
+  B:00A0H.7       PUBLIC        oe
+  B:00A0H.3       PUBLIC        p23
+  B:0088H.4       PUBLIC        TR0
+  C:0003H         PUBLIC        int1
+  -------         PROC          INT1
+  C:0003H         LINE#         10
+  C:0003H         LINE#         12
+  C:0005H         LINE#         13
+  -------         ENDPROC       INT1
+  -------         PROC          MAIN
+  -------         DO            
+  D:0003H         SYMBOL        date
+  D:0008H         SYMBOL        bzlc
+  D:0004H         SYMBOL        ddate
+  D:0002H         SYMBOL        bw
+  D:0007H         SYMBOL        sw
+  D:0006H         SYMBOL        gw
+  D:0009H         SYMBOL        i
+  -------         ENDDO         
+  C:0340H         LINE#         14
+  C:0340H         LINE#         15
+  C:0340H         LINE#         17
+  C:0343H         LINE#         21
+  C:0346H         LINE#         22
+  C:0349H         LINE#         23
+  C:034CH         LINE#         24
+  C:034FH         LINE#         25
+  C:0351H         LINE#         26
+  C:0351H         LINE#         27
+  C:0351H         LINE#         28
+  C:0353H         LINE#         29
+  C:0355H         LINE#         30
+  C:0357H         LINE#         31
+  C:0361H         LINE#         32
+  C:0364H         LINE#         33
+BL51 BANKED LINKER/LOCATER V6.22                                                      06/19/2023  09:26:04  PAGE 3
+
+
+  C:0366H         LINE#         34
+  C:0368H         LINE#         35
+  C:036AH         LINE#         36
+  C:0370H         LINE#         37
+  C:039BH         LINE#         38
+  C:03A0H         LINE#         39
+  C:03A8H         LINE#         40
+  C:03C8H         LINE#         41
+  C:03DCH         LINE#         42
+  C:03DFH         LINE#         43
+  C:03DFH         LINE#         44
+  C:03E1H         LINE#         45
+  C:03F4H         LINE#         46
+  C:03FEH         LINE#         47
+  C:0400H         LINE#         48
+  C:0402H         LINE#         50
+  C:0402H         LINE#         51
+  C:0404H         LINE#         52
+  C:0407H         LINE#         53
+  C:0410H         LINE#         54
+  C:0412H         LINE#         55
+  C:0412H         LINE#         56
+  C:0415H         LINE#         57
+  C:0415H         LINE#         58
+  C:0418H         LINE#         59
+  C:0418H         LINE#         60
+  C:041AH         LINE#         61
+  C:042DH         LINE#         62
+  C:0437H         LINE#         63
+  C:0439H         LINE#         64
+  C:043BH         LINE#         66
+  C:043BH         LINE#         67
+  C:043DH         LINE#         68
+  C:0440H         LINE#         69
+  C:0449H         LINE#         70
+  C:044BH         LINE#         71
+  C:044BH         LINE#         72
+  C:044DH         LINE#         74
+  C:044DH         LINE#         75
+  C:044FH         LINE#         76
+  C:0463H         LINE#         77
+  C:046DH         LINE#         78
+  C:046FH         LINE#         79
+  C:046FH         LINE#         80
+  C:0471H         LINE#         81
+  C:0486H         LINE#         82
+  C:0490H         LINE#         83
+  C:0492H         LINE#         84
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        AD0808
+
+  -------         MODULE        ?C?FPMUL
+  C:000EH         PUBLIC        ?C?FPMUL
+  -------         ENDMOD        ?C?FPMUL
+
+  -------         MODULE        ?C?FPDIV
+  C:0117H         PUBLIC        ?C?FPDIV
+BL51 BANKED LINKER/LOCATER V6.22                                                      06/19/2023  09:26:04  PAGE 4
+
+
+  -------         ENDMOD        ?C?FPDIV
+
+  -------         MODULE        ?C?FCAST
+  C:01BEH         PUBLIC        ?C?FCASTC
+  C:01B9H         PUBLIC        ?C?FCASTI
+  C:01B4H         PUBLIC        ?C?FCASTL
+  -------         ENDMOD        ?C?FCAST
+
+  -------         MODULE        ?C?CASTF
+  C:01F2H         PUBLIC        ?C?CASTF
+  -------         ENDMOD        ?C?CASTF
+
+  -------         MODULE        ?C?SCDIV
+  C:0273H         PUBLIC        ?C?SCDIV
+  -------         ENDMOD        ?C?SCDIV
+
+  -------         MODULE        ?C?IMUL
+  C:0295H         PUBLIC        ?C?IMUL
+  -------         ENDMOD        ?C?IMUL
+
+  -------         MODULE        ?C?SIDIV
+  C:02A7H         PUBLIC        ?C?SIDIV
+  -------         ENDMOD        ?C?SIDIV
+
+  -------         MODULE        ?C?LNEG
+  C:02DDH         PUBLIC        ?C?LNEG
+  -------         ENDMOD        ?C?LNEG
+
+  -------         MODULE        ?C?UIDIV
+  C:02EBH         PUBLIC        ?C?UIDIV
+  -------         ENDMOD        ?C?UIDIV
+
+Program Size: data=11.0 xdata=0 code=1189
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,179 @@
+A51 MACRO ASSEMBLER  RS485__»_____Í__ÅÏ_Í__Ó»_1                                           05/27/2016 17:20:28 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.01
+OBJECT MODULE PLACED IN RS485¶à»úÔ¶³ÌÍ¨ÐÅÏµÍ³´Ó»ú1.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE RS485¶à»úÔ¶³ÌÍ¨ÐÅÏµÍ³´Ó»ú1.ASM SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1             ORG     0000H
+0000 2100              2             AJMP    MAIN
+0023                   3             ORG     0023H
+0023 2133              4             AJMP    INT
+0100                   5             ORG     0100H
+  0097                 6             RS              BIT     P1.7            ;LCDÒº¾§ÏÔÊ¾Ö¸ÁîÊ¾ÝÑ¡Ôñ¿ØÖÆ
+  0096                 7             RW      BIT     P1.6            ;LCDÒº¾§ÏÔÊ¾¶ÁÐ´Ñ¡Ôñ¿ØÖÆ
+  0095                 8             EN              BIT     P1.5            ;LCDÒº¾§ÏÔÊ¾Ê¹ÄÜ¿ØÖÆ
+  00A0                 9             LCD     EQU     P2              ;LCDÒº¾§ÏÔÊ¾¿ØÖÆP2¿Ú
+  00B5                10             P3_5    BIT             P3.5            ;¿ØÖÆMAX487·¢ËÍ£¨1£©ºÍ½ÓÊÕ£¨0£©
+0100 758160           11     MAIN:   MOV     SP,#60H
+0103 7598F0           12             MOV     SCON,#0F0H              ;´®ÐÐ¿Ú¹¤×÷ÓÚ·½Ê½3£¬SM2=1¶à»úÍ¨ÐÅ
+                      13                                                             ;REN=1¿É½ÓÊÕÊ¾Ý£¨Ò²¿É·¢ËÍ£©
+0106 758920           14             MOV     TMOD,#20H               ;¶¨Ê±Æ÷1×Ô¶¯ÖØ×°ÔØ,Í¬Ö÷»ú³ÌÐò
+0109 758DFD           15             MOV     TH1,#0FDH               ;²¨ÌØÂÊÉèÖÃ,Í¬Ö÷»ú³ÌÐò
+010C 758BFD           16     MOV     TL1,#0FDH
+010F D28E             17             SETB    TR1
+0111 D2AC             18             SETB    ES                              ;´®ÐÐ¿ÚÖÐ¶ÏÔÊÐí
+0113 D2AF             19             SETB    EA                                                                         
+                                                                  
+0115 317A             20             ACALL   INIT_LCD                ;µ÷ÓÃ³õÊ¼»¯×Ó³ÌÐò
+0117 75A081           21             MOV     LCD,#81H                ;¶¨Î»µÚ1ÐÐµÚ2¸öÎ»ÖÃ
+011A 318F             22             ACALL   WR_COMM         ;µ÷ÓÃÐ´Ö¸Áî×Ó³ÌÐò
+011C 9001B5           23             MOV     DPTR,#TAB0              ;ËÍµÚ1ÐÐÎÄ±¾Ê×µØÖ·
+011F 316A             24             ACALL   DISP_LCD                ;µ÷ÓÃ²é±íÏÔÊ¾×Ó³ÌÐò
+0121 75A0C1           25             MOV     LCD,#0C1H               ;¶¨Î»µÚ2ÐÐµÚ2¸öÎ»ÖÃ
+0124 318F             26             ACALL   WR_COMM
+0126 9001C1           27             MOV     DPTR,#TAB1              ;ËÍµÚ2ÐÐÎÄ±¾Ê×µØÖ·
+0129 316A             28             ACALL   DISP_LCD                ;µ÷ÓÃ²é±íÏÔÊ¾×Ó³ÌÐò
+012B 754000           29     MOV     40H,#00H                ;´æ·ÅÓëÖ÷»úÍ¨ÐÅ´ÎÊ,ÓÃÓÚ¶ÔÓ¦´ÎÊÏÔÊ¾
+012E C2B5             30             CLR             P3_5                    ;µÈ´½ÓÊÕ
+0130 00               31     SERIAL: NOP                                     ;µÈ´´®ÐÐÖÐ¶Ï
+0131 2130             32             AJMP    SERIAL
+                      33     ;´®ÐÐÖÐ¶Ï×Ó³ÌÐò
+0133 C2AC             34     INT:            CLR             ES                              ;´®ÐÐ¿ÚÖÐ¶Ï¹Ø±Õ
+                      35     ;´®ÐÐ¿ÚÖÐ¶Ï¹Ø±Õºó,´®ÐÐ¿ÚÖÐ¶Ï´¦ÓÚ²éÑ¯·½Ê½
+0135 C298             36             CLR             RI                              ;´®ÐÐ¿ÚÖÐ¶Ï±êÖ¾±ØÐëÈË¹¤ÇåÁã
+0137 E599             37             MOV     A ,SBUF                 ;¶ÁÈ¡Ö÷»ú·¢À´µÄµØÖ·
+0139 B40127           38             CJNE    A,#01, RESERIAL ;½ÓÊÕÊ¾Ý·Ç01,×ªSERIAL0
+013C D2B5             39             SETB    P3_5                    ;×¼±¸ÏòÖ÷»ú·¢ËÍÊ¾Ý
+013E 759910           40             MOV     SBUF,#10H;              ;ÏòÖ÷»ú·¢ËÍÊ¾Ý£¬¸ß4Î»¹©BCDÊÂë¹ÜÏÔÊ¾
+0141 3099FD           41     JNB             TI,$                            ;´ËÊ±,´®ÐÐ¿ÚÖÐ¶Ï´¦ÓÚ²éÑ¯·½Ê½
+0144 C299             42             CLR             TI
+0146 C29D             43             CLR             SM2                             ;×¼±¸½ÓÊÕÖ÷»ú·¢ËÍµÄTB8=0µÄÊ¾Ý
+                      44             ;add your code here!            ;ÔÚ´Ë¿ÉÒÔÌí¼ÓÓëÖ÷»úÍ¨ÐÅÐÅÏ¢½»»»´úÂë
+                      45             ;ÏÔÊ¾ÓëÖ÷»úÍ¨ÐÅ´ÎÊ
+0148 E540             46             MOV     A,40H
+014A 75A0C9           47             MOV     LCD,#0C9H               ;Ã¿´Î¾ù¶¨Î»µÚ2ÐÐµÚ10¸öÎ»ÖÃ
+014D 318F             48             ACALL   WR_COMM
+014F 9001C8           49             MOV     DPTR ,#TAB2             ;ËÍµÚ2ÏÔÊ¾´ÎÊ¶ÔÓ¦Ê×Ö±íÊ×µØÖ·    
+0152 E540             50             MOV     A,40H                   ;ÏÔÊ¾´ÎÊËÍA
+0154 93               51             MOVC    A,@A+DPTR               ;±íÖÐÕÒµ½ÏÔÊ¾´ÎÊ×Ö·û¶ÔÓ¦µØÖ·
+0155 F5A0             52             MOV     LCD,A                   ;ÏÔÊ¾¸Ã×Ö·û
+0157 319A             53             ACALL   WR_DATA
+0159 0540             54             INC     40H     
+015B E540             55             MOV     A,40H
+015D B40A03           56             CJNE    A,#10, RESERIAL ;Î´´ïµ½10´Î,×ªSERIAL0
+0160 754000           57             MOV     40H,#00H                ;´ïµ½10´Î,ÖØÐÂ¼ÆÊ
+A51 MACRO ASSEMBLER  RS485__»_____Í__ÅÏ_Í__Ó»_1                                           05/27/2016 17:20:28 PAGE     2
+
+0163                  58     RESERIAL:                                               ;ÖØÐÂ½øÈë½ÓÊÕÖ÷»úµØÖ·µÄÍ¨ÐÅÖÐ
+0163 C2B5             59     CLR     P3_5                            ;×¼±¸´ÓÖ÷»ú½ÓÊÕ
+0165 D29D             60             SETB    SM2                             ;×¼±¸´ÓÖ÷»ú½ÓÊÕµØÖ·
+0167 D2AC             61             SETB    ES
+0169 32               62             RETI
+                      63     ; ²é±íÏÔÊ¾×Ó³ÌÐò
+016A                  64     DISP_LCD: 
+016A 7400             65             MOV     A,#00H
+016C 93               66             MOVC    A,@A+DPTR
+016D B4FF02           67             CJNE    A,#0FFH,SS              ;ÊÇ·ñÊÇ×îºóÒ»¸ö×Ö·û
+0170 2179             68             AJMP    EXIT
+0172 F5A0             69     SS:             MOV     LCD,A
+0174 319A             70             ACALL   WR_DATA
+0176 A3               71             INC     DPTR
+0177 216A             72             AJMP    DISP_LCD
+0179 22               73     EXIT:   RET
+                      74     ;³õÊ¼»¯×Ó³ÌÐò
+017A                  75     INIT_LCD:
+017A 75A001           76             MOV     LCD,#01H                ;ÇåÆÁ
+017D 318F             77             ACALL   WR_COMM
+017F 75A006           78             MOV     LCD,#00000110B  ;Ê¾Ý¶ÁÐ´ÆÁÄ»»­Ãæ²»¶¯,AC×Ô¶¯¼Ó1
+0182 318F             79             ACALL   WR_COMM
+0184 75A00C           80             MOV     LCD,#00001100B  ;¿ªÏÔÊ¾,ÎÞ¹â±ê,²»ÉÁË¸
+0187 318F             81             ACALL   WR_COMM
+0189 75A038           82             MOV     LCD ,#38H               ;¹¦ÄÜÉèÖÃ£º8Î»Ê¾Ý,Ë«ÐÐÏÔÊ¾,5¡Á7µãÕó×Ö·û
+018C 318F             83             ACALL   WR_COMM
+018E 22               84             RET
+                      85     ;Ð´ÃüÁî×Ó³ÌÐò
+018F                  86     WR_COMM:        
+018F C297             87             CLR             RS                              ;Ñ¡ÔñÖ¸Áî¼Ä´æÆ÷
+0191 C296             88             CLR             RW                              ;Ñ¡ÔñÐ´Ä£Ê½
+0193 C295             89             CLR             EN                              ;½ûÖ¹Ð´LCD
+0195 31A5             90             ACALL   DELAY                   ;µ÷ÓÃÑÓÊ±»òÃ¦¼ì²â
+0197 D295             91             SETB    EN                              ;ÔÊÐíÐ´LCD
+0199 22               92             RET
+                      93     ;Ð´Ê¾Ý×Ó³ÌÐò
+019A                  94     WR_DATA:
+019A D297             95             SETB    RS
+019C C296             96             CLR     RW
+019E C295             97             CLR     EN
+01A0 31A5             98             ACALL   DELAY                   ;µ÷ÓÃÑÓÊ±»òÃ¦¼ì²â
+01A2 D295             99             SETB    EN
+01A4 22              100             RET      
+                     101     ;Ã¦¼ì²â
+01A5                 102     DELAY:  
+01A5 75A0FF          103             MOV     LCD,#0FFH       
+01A8 C297            104             CLR     RS
+01AA D296            105             SETB    RW
+01AC C295            106             CLR     EN
+01AE 00              107             NOP
+01AF D295            108             SETB    EN
+01B1 20A7F1          109             JB              LCD.7,DELAY     ;Ã¦Î»¼ì²â
+01B4 22              110             RET
+01B5 50726F74        111     TAB0:   DB              "Proteus 7.1",0FFH ;ÏÔÊ¾×Ö¿â       
+01B9 65757320                
+01BD 372E31FF                
+01C1 436F756E        112     TAB1:   DB              "Count:",0FFH
+01C5 743AFF                  
+01C8 31323334        113     TAB2:   DB              "1234567890"
+01CC 35363738                
+01D0 3930                    
+                     114             END
+A51 MACRO ASSEMBLER  RS485__»_____Í__ÅÏ_Í__Ó»_1                                           05/27/2016 17:20:28 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY. . . . . . .  C ADDR   01A5H   A   
+DISP_LCD . . . . .  C ADDR   016AH   A   
+EA . . . . . . . .  B ADDR   00A8H.7 A   
+EN . . . . . . . .  B ADDR   0090H.5 A   
+ES . . . . . . . .  B ADDR   00A8H.4 A   
+EXIT . . . . . . .  C ADDR   0179H   A   
+INIT_LCD . . . . .  C ADDR   017AH   A   
+INT. . . . . . . .  C ADDR   0133H   A   
+LCD. . . . . . . .  D ADDR   00A0H   A   
+MAIN . . . . . . .  C ADDR   0100H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+P3 . . . . . . . .  D ADDR   00B0H   A   
+P3_5 . . . . . . .  B ADDR   00B0H.5 A   
+RESERIAL . . . . .  C ADDR   0163H   A   
+RI . . . . . . . .  B ADDR   0098H.0 A   
+RS . . . . . . . .  B ADDR   0090H.7 A   
+RW . . . . . . . .  B ADDR   0090H.6 A   
+SBUF . . . . . . .  D ADDR   0099H   A   
+SCON . . . . . . .  D ADDR   0098H   A   
+SERIAL . . . . . .  C ADDR   0130H   A   
+SM2. . . . . . . .  B ADDR   0098H.5 A   
+SP . . . . . . . .  D ADDR   0081H   A   
+SS . . . . . . . .  C ADDR   0172H   A   
+TAB0 . . . . . . .  C ADDR   01B5H   A   
+TAB1 . . . . . . .  C ADDR   01C1H   A   
+TAB2 . . . . . . .  C ADDR   01C8H   A   
+TH1. . . . . . . .  D ADDR   008DH   A   
+TI . . . . . . . .  B ADDR   0098H.1 A   
+TL1. . . . . . . .  D ADDR   008BH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR1. . . . . . . .  B ADDR   0088H.6 A   
+WR_COMM. . . . . .  C ADDR   018FH   A   
+WR_DATA. . . . . .  C ADDR   019AH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

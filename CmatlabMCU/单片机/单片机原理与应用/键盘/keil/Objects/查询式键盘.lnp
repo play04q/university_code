@@ -1,0 +1,3 @@
+".\Objects\查询式键盘.obj" 
+TO ".\Objects\查询式键盘" 
+PRINT(".\Listings\查询式键盘.m51")

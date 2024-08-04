@@ -1,0 +1,3 @@
+".\Objects\作业点三个灯改.obj" 
+TO ".\Objects\作业点三个灯" 
+PRINT(".\Listings\作业点三个灯.m51")

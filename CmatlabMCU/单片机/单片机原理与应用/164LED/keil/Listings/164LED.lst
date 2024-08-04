@@ -1,0 +1,51 @@
+C51 COMPILER V9.54   164LED                                                                05/11/2023 15:44:13 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE 164LED
+OBJECT MODULE PLACED IN .\Objects\164LED.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE 164LED.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\16
+                    -4LED.lst) TABS(2) OBJECT(.\Objects\164LED.obj)
+
+line level    source
+
+   1          #include <REGX51.H>
+   2          const char tab[]={0x3f,0x06,0x5b,0x4f,0x66,
+   3                            0x6d,0x7d,0x07,0x7f,0x6f,0x77,
+   4                            0x7c,0x39,0x5e,0x79,0x71};
+   5          char i;
+   6          sbit P32=P3^2;
+   7          void main()
+   8          {
+   9   1        SCON=0x00;
+  10   1        P32=1;
+  11   1        SBUF=0x3f;
+  12   1        while(TI==0);
+  13   1        TI=0;
+  14   1        while(1)
+  15   1        {
+  16   2          if(P32==0)
+  17   2          {
+  18   3            i++;
+  19   3            if(i==16)
+  20   3              i=0;
+  21   3            SBUF=tab[i];
+  22   3            while(TI==0);
+  23   3            TI=0;
+  24   3            while(P32==0);
+  25   3          }
+  26   2        }
+  27   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     44    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     17    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

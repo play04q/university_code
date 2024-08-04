@@ -1,0 +1,111 @@
+C51 COMPILER V9.54   AD0808                                                                06/07/2023 14:11:34 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE AD0808
+OBJECT MODULE PLACED IN .\Objects\AD0808.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE AD0808.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\AD
+                    -0808.lst) TABS(2) OBJECT(.\Objects\AD0808.obj)
+
+line level    source
+
+   1          #include <REGX51.H>
+   2          sbit start=P2^5;
+   3          sbit eoc=P2^6;
+   4          sbit oe=P2^7;
+   5          sbit clock=P2^4;
+   6          sbit p21=P2^1;
+   7          sbit p22=P2^2;
+   8          sbit p23=P2^3;
+   9          char code tab[]={0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x7f,0x6f};
+  10          void int1() interrupt 1 using 1
+  11          {
+  12   1        clock=~clock;
+  13   1      }
+  14          void main()
+  15          {
+  16   1        char date;
+  17   1        char bzlc=220;
+  18   1        double ddate;
+  19   1        char bw,sw,gw;
+  20   1        char i;
+  21   1        TMOD=0x02;
+  22   1        TH0=246;
+  23   1        TL0=246;
+  24   1        IE=0x82;
+  25   1        TR0=1;
+  26   1        while(1)
+  27   1        {
+  28   2          start=0;
+  29   2          start=1;
+  30   2          start=0;
+  31   2          for(i=0;i<20;i++);
+  32   2          while(eoc==0);
+  33   2          oe=1;
+  34   2          date=P1;
+  35   2          oe=0;
+  36   2          ddate=date;
+  37   2          ddate=(ddate/225)*bzlc;
+  38   2          date=ddate;
+  39   2          bw=date/100;
+  40   2          sw=(date-bw*100)/10;
+  41   2          gw=date-bw*100-sw*10;
+  42   2          if(bw)
+  43   2          {
+  44   3            p23=0;
+  45   3            P0=tab[bw];
+  46   3            for(i=0;i<25;i++);
+  47   3            p23=1;
+  48   3          }
+  49   2          else
+  50   2          {
+  51   3            p23=0;
+  52   3            P0=0x00;
+  53   3            for(i=0;i<25;i++);
+  54   3            p23=1;
+C51 COMPILER V9.54   AD0808                                                                06/07/2023 14:11:34 PAGE 2   
+
+  55   3          }
+  56   2          if(bw==0)
+  57   2          {
+  58   3            if(sw)
+  59   3            {
+  60   4              p22=0;
+  61   4              P0=tab[sw];
+  62   4              for(i=0;i<25;i++);
+  63   4              p22=1;
+  64   4            }
+  65   3            else
+  66   3            {
+  67   4              p22=0;
+  68   4              P0=0x00;
+  69   4              for(i=0;i<25;i++);
+  70   4              p22=1;
+  71   4            }
+  72   3          }
+  73   2          else
+  74   2          {
+  75   3            p22=0;
+  76   3            P0=tab[sw];
+  77   3            for(i=0;i<25;i++);
+  78   3            p22=1;
+  79   3          }
+  80   2          p21=0;
+  81   2          P0=tab[gw];
+  82   2          for(i=0;i<25;i++);
+  83   2          p21=1;
+  84   2        }
+  85   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    344    ----
+   CONSTANT SIZE    =      9    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       2
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

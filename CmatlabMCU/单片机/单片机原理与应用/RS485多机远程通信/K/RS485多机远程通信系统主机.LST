@@ -1,0 +1,85 @@
+C51 COMPILER V9.00   RS485多籣远程通信系统_骰_                                             05/26/2016 14:24:30 PAGE 1   
+
+
+C51 COMPILER V9.00, COMPILATION OF MODULE RS485多籣远程通信系统_骰_
+OBJECT MODULE PLACED IN RS485多机远程通信系统主机.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE RS485多机远程通信系统主机.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include<reg51.h>
+   2          #include<absacc.h>
+   3          #include<intrins.h>
+   4          unsigned char cort=0;
+   5          sbit P3_5=P3^5;                         //控制MAX487发送（1）和接收（0）
+   6          void master(void)                       //发送子程序
+   7          {
+   8   1              if(cort==1)                             //与1#从机通信
+   9   1              {       
+  10   2                      SBUF=0x01;                      //发送1#从机地址
+  11   2                      while(TI!=1);
+  12   2                      TI=0;
+  13   2                      P3_5=0;                         //准备接收1#从机发来的数据
+  14   2                      SM2=0;                          //准备接收第9位TB8为0的数据
+  15   2                      while(RI!=1);
+  16   2                      RI=0;
+  17   2                      P2=SBUF;                        //BCD数码管显示1#从机发来的数据的高4位
+  18   2                      //add your code here!
+  19   2              }               
+  20   1              if(cort==2)                             //与2#从机通信
+  21   1              {
+  22   2                      SBUF=0x02;                      //发送2#从机地址
+  23   2                      while(TI!=1);
+  24   2                      TI=0;
+  25   2                      P3_5=0;                         //准备接收2#从机发来的数据
+  26   2                      SM2=0;                          //准备接收第9位TB8为0的数据     
+  27   2                      while(RI!=1);
+  28   2                      RI=0;
+  29   2                      P2=SBUF;                        //BCD数码管显示2#从机发来的数据的高4位
+  30   2                      //add your code here!           
+  31   2              }                                                        
+  32   1              if(cort==2)
+  33   1              cort=0;
+  34   1              SM2=1;                          //准备向所有从机发送新的地址
+  35   1              P3_5=1;                         //准备发送              
+  36   1      }
+  37          key_serial() interrupt 0        //按键扫描子程序
+  38          {        
+  39   1               ++cort;                                //按键次数
+  40   1               master();                              //发送子程序
+  41   1      }
+  42          void main(void)
+  43          {
+  44   1              
+  45   1              P2=0xf0;                                //BCD数码管显示F（P2口高4位控制）
+  46   1              SCON=0xf8;                              //串行口工作于方式3，SM2=1多机通信，
+  47   1                                                              //REN=1可接收数据，TB8=1发送地址                        
+  48   1              TMOD=0x20;                              //T1工作于方式2，作波特率发生器用
+  49   1              TL1=0xfd;                               //波特率＝fosc/32/12/（256-253）
+  50   1              TH1=0xfd;
+  51   1              TR1=1;  
+  52   1              EA=1;
+  53   1              EX0=1;
+  54   1              IT0=1;
+  55   1              P3_5=1;                                 //准备发送地址
+C51 COMPILER V9.00   RS485多籣远程通信系统_骰_                                             05/26/2016 14:24:30 PAGE 2   
+
+  56   1              while(1)
+  57   1              {
+  58   2                      _nop_();
+  59   2              }
+  60   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    105    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      1    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

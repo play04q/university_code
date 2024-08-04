@@ -1,0 +1,226 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        11/23/2022  13:44:55  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\STARTUP.obj, .\Objects\main.obj TO .\Objects\liangzhilaohu PRINT (.\Listings\liang
+>> zhilaohu.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\STARTUP.obj (?C_STARTUP)
+  .\Objects\main.obj (MAIN)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_INIT)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?IMUL)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?SLCMP)
+
+
+LINK MAP OF MODULE:  .\Objects\liangzhilaohu (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0002H     UNIT         ?DT?MAIN
+            DATA    000AH     0001H     UNIT         _DATA_GROUP_
+                    000BH     0015H                  *** GAP ***
+            BIT     0020H.0   0000H.2   UNIT         ?BI?MAIN
+                    0020H.2   0000H.6                *** GAP ***
+            IDATA   0021H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     0008H                  *** GAP ***
+            CODE    000BH     0003H     ABSOLUTE     
+            CODE    000EH     00AEH     UNIT         ?PR?PLAYTWOTIGER?MAIN
+            CODE    00BCH     008CH     UNIT         ?C_C51STARTUP
+            CODE    0148H     0078H     UNIT         ?CO?MAIN
+            CODE    01C0H     002BH     UNIT         ?PR?MAIN?MAIN
+            CODE    01EBH     0028H     UNIT         ?C?LIB_CODE
+            CODE    0213H     0011H     UNIT         ?PR?INTERRUPTTIMER0?MAIN
+            CODE    0224H     000BH     UNIT         ?C_INITSEG
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\liangzhilaohu (?C_STARTUP)
+
+
+SEGMENT                            DATA_GROUP 
+  +--> CALLED SEGMENT            START    LENGTH
+------------------------------------------------
+?C_C51STARTUP                    -----    -----
+  +--> ?PR?MAIN?MAIN
+  +--> ?C_INITSEG
+
+?PR?MAIN?MAIN                    -----    -----
+  +--> ?PR?PLAYTWOTIGER?MAIN
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/23/2022  13:44:55  PAGE 2
+
+
+?PR?PLAYTWOTIGER?MAIN            000AH    0001H
+  +--> ?CO?MAIN
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\liangzhilaohu (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C_STARTUP
+  C:00BCH         SEGMENT       ?C_C51STARTUP
+  I:0021H         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:00BFH         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:00BCH         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+  C:00BCH         LINE#         133
+  C:00BEH         LINE#         134
+  C:00BFH         LINE#         135
+  C:00C0H         LINE#         136
+  C:00C2H         LINE#         185
+  C:00C5H         LINE#         196
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  B:00A8H.7       PUBLIC        EA
+  C:0213H         PUBLIC        InterruptTimer0
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  D:0008H         PUBLIC        T0RH
+  C:0148H         PUBLIC        NoteFrequ
+  D:0009H         PUBLIC        T0RL
+  C:01C0H         PUBLIC        main
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/23/2022  13:44:55  PAGE 3
+
+
+  D:0098H         PUBLIC        SCON
+  D:0089H         PUBLIC        TMOD
+  D:0088H         PUBLIC        TCON
+  B:00A8H.1       PUBLIC        ET0
+  B:00A0H.5       PUBLIC        BUZZ
+  D:008CH         PUBLIC        TH0
+  D:008AH         PUBLIC        TL0
+  C:000EH         PUBLIC        PlayTwoTiger
+  B:0088H.4       PUBLIC        TR0
+  D:00C8H         PUBLIC        T2CON
+  B:0020H.0       PUBLIC        enable
+  B:0020H.1       PUBLIC        tmrflag
+  C:0164H         PUBLIC        NoteReload
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          MAIN
+  -------         DO            
+  D:0082H         SYMBOL        i
+  -------         ENDDO         
+  C:01C0H         LINE#         28
+  C:01C0H         LINE#         29
+  C:01C0H         LINE#         32
+  C:01C2H         LINE#         33
+  C:01C5H         LINE#         34
+  C:01C8H         LINE#         35
+  C:01CBH         LINE#         36
+  C:01CDH         LINE#         37
+  C:01CFH         LINE#         39
+  C:01CFH         LINE#         40
+  C:01CFH         LINE#         41
+  C:01D2H         LINE#         42
+  -------         ENDPROC       MAIN
+  -------         PROC          PLAYTWOTIGER
+  -------         DO            
+  D:0001H         SYMBOL        beat
+  D:000AH         SYMBOL        note
+  D:0002H         SYMBOL        time
+  D:0004H         SYMBOL        beatTime
+  D:0006H         SYMBOL        soundTime
+  C:0180H         SYMBOL        TwoTigerNote
+  C:01A0H         SYMBOL        TwoTigerBeat
+  -------         ENDDO         
+  C:000EH         LINE#         46
+  C:000EH         LINE#         47
+  C:000EH         LINE#         50
+  C:0011H         LINE#         51
+  C:0013H         LINE#         52
+  C:0015H         LINE#         64
+  C:001FH         LINE#         65
+  C:001FH         LINE#         66
+  C:0022H         LINE#         67
+  C:0024H         LINE#         68
+  C:0028H         LINE#         69
+  C:0028H         LINE#         70
+  C:0030H         LINE#         71
+  C:003FH         LINE#         72
+  C:0051H         LINE#         74
+  C:007DH         LINE#         76
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/23/2022  13:44:55  PAGE 4
+
+
+  C:008EH         LINE#         77
+  C:0090H         LINE#         78
+  C:0095H         LINE#         79
+  C:0098H         LINE#         81
+  C:0098H         LINE#         82
+  C:009FH         LINE#         83
+  C:009FH         LINE#         84
+  C:00A2H         LINE#         85
+  C:00A3H         LINE#         86
+  C:00A6H         LINE#         88
+  C:00A6H         LINE#         89
+  C:00ABH         LINE#         90
+  C:00B6H         LINE#         91
+  C:00B6H         LINE#         92
+  C:00B8H         LINE#         93
+  C:00B8H         LINE#         94
+  C:00B8H         LINE#         95
+  C:00B8H         LINE#         96
+  C:00BBH         LINE#         97
+  -------         ENDPROC       PLAYTWOTIGER
+  -------         PROC          INTERRUPTTIMER0
+  C:0213H         LINE#         99
+  C:0213H         LINE#         101
+  C:0216H         LINE#         102
+  C:0219H         LINE#         103
+  C:021BH         LINE#         104
+  C:021EH         LINE#         105
+  C:0221H         LINE#         107
+  C:0223H         LINE#         108
+  -------         ENDPROC       INTERRUPTTIMER0
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        ?C?IMUL
+  C:01EBH         PUBLIC        ?C?IMUL
+  -------         ENDMOD        ?C?IMUL
+
+  -------         MODULE        ?C?SLCMP
+  C:01FDH         PUBLIC        ?C?SLCMP
+  -------         ENDMOD        ?C?SLCMP
+
+Program Size: data=12.2 xdata=0 code=551
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

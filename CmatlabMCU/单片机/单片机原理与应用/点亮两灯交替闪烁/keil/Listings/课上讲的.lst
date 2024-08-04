@@ -1,0 +1,36 @@
+A51 MACRO ASSEMBLER  ________                                                             04/06/2023 15:50:37 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\课上讲的.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE 课上讲的.ASM SET(SMALL) DEBUG PRINT(.\Listings\课上讲的.lst) OBJECT(.\O
+                      bjects\课上讲的.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0030                   1     ORG 0030H
+0030 74FF              2             MOV A,#0FFH
+0032 F590              3             MOV P1,A
+0034 209204            4             JB P1.2,KD
+0037 C290              5             CLR P1.0
+0039 013D              6             AJMP EXIT
+003B C291              7             KD:CLR P1.1
+003D 00                8             EXIT:NOP
+                       9     END
+A51 MACRO ASSEMBLER  ________                                                             04/06/2023 15:50:37 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+EXIT . . . . . . .  C ADDR   003DH   A   
+KD . . . . . . . .  C ADDR   003BH   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

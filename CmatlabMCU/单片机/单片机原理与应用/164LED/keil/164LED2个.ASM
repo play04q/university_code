@@ -1,0 +1,59 @@
+  ORG   0000H
+      AJMP  START
+      ORG   0003H
+      AJMP  INTR0
+      ORG   0013H
+      AJMP  INTR1
+START:MOV   SP,#60H
+      SETB  EX0
+      SETB  IT0
+      SETB  EX1
+      SETB  IT1
+      SETB  EA
+      MOV   R0,#00H
+      MOV   DPTR,#TABLE
+LP:   MOV   A,#00H
+      MOVC  A,@A+DPTR
+      MOV   P2,A
+      LCALL DELAY
+      INC   R0
+      INC   DPTR
+      MOV   A,#00H
+      MOVC  A,@A+DPTR
+      CJNE  A,#1BH,LP
+      MOV   DPTR,#TABLE
+      MOV   R0,#00H
+      SJMP  LP
+INTR0:PUSH  DPL
+      PUSH  DPH
+      PUSH  ACC
+      PUSH  PSW
+      MOV   A,R0
+      SETB  RS0
+      MOV   DPTR,#TABLE1
+      MOVC  A,@A+DPTR
+      MOV   P0,A
+      LCALL DELAY
+      POP   PSW
+      POP   ACC
+      POP   DPH
+      POP   DPL
+      RETI
+INTR1:PUSH  PSW
+      SETB  RS1
+      MOV   P0,#00H
+      LCALL DELAY
+      POP   PSW
+      RETI
+TABLE:DB 3FH,06H,5BH,4FH,66H
+      DB 6DH,7DH,07H,7FH,6FH,1BH
+TABLE1:DB 0C0H,0F9H,0A4H,0B0H,99H
+      DB 92H,82H,0F8H,80H,90H,1BH
+DELAY:MOV R7,#20
+DELA1:MOV R6,#40
+DELA2:MOV R5,#248
+      DJNZ R5,$
+      DJNZ R6,DELA2
+      DJNZ R7,DELA1
+      RET
+      END

@@ -1,0 +1,148 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        04/27/2023  20:58:18  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\八个灯作业.obj TO .\Objects\中断八个灯作业 PRINT (.\Listings\中断八个灯作业.m51)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\八个灯作业.obj (__________)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  .\Objects\中断八个灯作业 (__________)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0059H     UNIT         ?DT?__________
+            DATA    0061H     0001H     UNIT         _DATA_GROUP_
+            IDATA   0062H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0003H     ABSOLUTE     
+                    0006H     000DH                  *** GAP ***
+            CODE    0013H     0003H     ABSOLUTE     
+            CODE    0016H     008CH     UNIT         ?C_C51STARTUP
+            CODE    00A2H     005EH     UNIT         ?C_INITSEG
+            CODE    0100H     0037H     UNIT         ?PR?INT0?__________
+            CODE    0137H     0037H     UNIT         ?PR?INT1?__________
+            CODE    016EH     0021H     UNIT         ?PR?DELAY?__________
+            CODE    018FH     001FH     UNIT         ?PR?MAIN?__________
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\中断八个灯作业 (__________)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?PR?INT0?__________            -----    -----
+  +--> ?PR?DELAY?__________
+
+*** NEW ROOT ***************************************************
+
+?PR?INT1?__________            -----    -----
+  +--> ?PR?DELAY?__________
+
+*** NEW ROOT ***************************************************
+
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?__________
+  +--> ?C_INITSEG
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/27/2023  20:58:18  PAGE 2
+
+
+
+?PR?MAIN?__________            0061H    0001H
+  +--> ?PR?DELAY?__________
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\中断八个灯作业 (__________)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        __________
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:00A8H         PUBLIC        IE
+  C:016EH         PUBLIC        delay
+  D:00B8H         PUBLIC        IP
+  C:018FH         PUBLIC        main
+  D:0088H         PUBLIC        TCON
+  D:0008H         PUBLIC        a
+  D:0009H         PUBLIC        tab1
+  D:0021H         PUBLIC        tab2
+  C:0100H         PUBLIC        int0
+  C:0137H         PUBLIC        int1
+  -------         PROC          DELAY
+  -------         DO            
+  D:0006H         SYMBOL        i
+  D:0004H         SYMBOL        j
+  -------         ENDDO         
+  C:016EH         LINE#         9
+  C:016EH         LINE#         10
+  C:016EH         LINE#         12
+  C:0171H         LINE#         13
+  C:0174H         LINE#         14
+  C:018EH         LINE#         15
+  -------         ENDPROC       DELAY
+  -------         PROC          INT0
+  -------         DO            
+  D:0003H         SYMBOL        i
+  -------         ENDDO         
+  C:0100H         LINE#         16
+  C:0113H         LINE#         19
+  C:0115H         LINE#         20
+  C:0115H         LINE#         21
+  C:011FH         LINE#         22
+  C:0122H         LINE#         23
+  C:0126H         LINE#         24
+  -------         ENDPROC       INT0
+  -------         PROC          INT1
+  -------         DO            
+  D:0003H         SYMBOL        i
+  -------         ENDDO         
+  C:0137H         LINE#         25
+  C:014AH         LINE#         28
+  C:014CH         LINE#         29
+  C:014CH         LINE#         30
+  C:0156H         LINE#         31
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/27/2023  20:58:18  PAGE 3
+
+
+  C:0159H         LINE#         32
+  C:015DH         LINE#         33
+  -------         ENDPROC       INT1
+  -------         PROC          MAIN
+  -------         DO            
+  D:0061H         SYMBOL        x
+  -------         ENDDO         
+  C:018FH         LINE#         34
+  C:018FH         LINE#         35
+  C:018FH         LINE#         36
+  C:0192H         LINE#         37
+  C:0195H         LINE#         38
+  C:0198H         LINE#         39
+  C:0198H         LINE#         40
+  C:0198H         LINE#         42
+  C:019BH         LINE#         43
+  C:019BH         LINE#         44
+  C:019EH         LINE#         45
+  C:01A1H         LINE#         46
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        __________
+
+Program Size: data=99.0 xdata=0 code=417
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

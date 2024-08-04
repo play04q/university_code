@@ -1,0 +1,25 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+C:\Documents and Settings\ASUS\桌面\RS485多机远程通信\K\RS485多机远程通信系统从机1.uvproj
+Project File Date:  05/27/2016
+
+<h2>Output:</h2>
+Build target 'Target 1'
+assembling RS485多机远程通信系统从机1.ASM...
+linking...
+Program Size: data=8.0 xdata=0 code=466
+creating hex file from "RS485多机远程通信系统从机1"...
+"RS485多机远程通信系统从机1" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+assembling RS485多机远程通信系统从机1.ASM...
+RS485多机远程通信系统从机1.ASM(14): error A9: SYNTAX ERROR
+目标未创建
+Build target 'Target 1'
+assembling RS485多机远程通信系统从机1.ASM...
+linking...
+Program Size: data=8.0 xdata=0 code=466
+creating hex file from "RS485多机远程通信系统从机1"...
+"RS485多机远程通信系统从机1" - 0 Error(s), 0 Warning(s).

@@ -1,0 +1,3 @@
+".\Objects\八个灯课堂.obj" 
+TO ".\Objects\中断器八个灯" 
+PRINT(".\Listings\中断器八个灯.m51")

@@ -1,0 +1,3 @@
+".\Objects\点灯.obj" 
+TO ".\Objects\点灯两个" 
+PRINT(".\Listings\点灯两个.m51") RAMSIZE(256) 

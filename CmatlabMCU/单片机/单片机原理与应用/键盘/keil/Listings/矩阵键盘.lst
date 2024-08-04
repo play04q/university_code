@@ -1,0 +1,166 @@
+A51 MACRO ASSEMBLER  ________                                                             05/17/2023 14:38:49 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\æÿ’Ûº¸≈Ã.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE æÿ’Ûº¸≈Ã.ASM SET(SMALL) DEBUG PRINT(.\Listings\æÿ’Ûº¸≈Ã.lst) OBJECT(.\O
+                      bjects\æÿ’Ûº¸≈Ã.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0000H
+0000 2100              2             AJMP MAIN
+0100                   3     ORG 0100H
+0100 75A000            4             MAIN:MOV P2,#00H
+0103 7590F0            5             KEY0:MOV P1,#0F0H
+0106 30940B            6                     JNB P1.4,COL0
+0109 309518            7                     JNB P1.5,COL1
+010C 309625            8                     JNB P1.6,COL2
+010F 309732            9                     JNB P1.7,COL3
+0112 2103             10                     AJMP KEY0
+0114 75900F           11             COL0:MOV P1,#0FH
+0117 30903A           12                     JNB P1.0,K0
+011A 309157           13                     JNB P1.1,K4
+011D 309274           14                     JNB P1.2,K8
+0120 309391           15                     JNB P1.3,K12
+*** __________________________________________________^
+*** ERROR #A51 IN 15 (æÿ’Ûº¸≈Ã.ASM, LINE 15): TARGET OUT OF RANGE
+0123 22               16                     RET
+0124 75900F           17             COL1:MOV P1,#0FH
+0127 309032           18                     JNB P1.0,K1
+012A 30914F           19                     JNB P1.1,K5
+012D 30926C           20                     JNB P1.2,K9
+0130 309389           21                     JNB P1.3,K13
+*** __________________________________________________^
+*** ERROR #A51 IN 21 (æÿ’Ûº¸≈Ã.ASM, LINE 21): TARGET OUT OF RANGE
+0133 22               22                     RET
+0134 75900F           23             COL2:MOV P1,#0FH
+0137 30902A           24                     JNB P1.0,K2
+013A 309147           25                     JNB P1.1,K6
+013D 309264           26                     JNB P1.2,K10
+0140 309381           27                     JNB P1.3,K14
+*** __________________________________________________^
+*** ERROR #A51 IN 27 (æÿ’Ûº¸≈Ã.ASM, LINE 27): TARGET OUT OF RANGE
+0143 22               28                     RET
+0144 75900F           29             COL3:MOV P1,#0FH
+0147 309022           30                     JNB P1.0,K3
+014A 30913F           31                     JNB P1.1,K7
+014D 30925C           32                     JNB P1.2,K11
+0150 309379           33                     JNB P1.3,K15
+0153 22               34                     RET
+0154 75A03F           35             K0:MOV P2,#3FH
+0157 31D4             36                     ACALL YSH1S
+0159 2103             37                     AJMP KEY0
+015B 22               38                     RET
+015C 75A005           39             K1:MOV P2,#05H
+015F 31D4             40                     ACALL YSH1S
+0161 2103             41                     AJMP KEY0
+0163 22               42                     RET
+0164 75A05B           43             K2:MOV P2,#5BH
+0167 31D4             44                     ACALL YSH1S
+0169 2103             45                     AJMP KEY0
+016B 22               46                     RET
+016C 75A04F           47             K3:MOV P2,#4FH
+016F 31D4             48                     ACALL YSH1S
+0171 2103             49                     AJMP KEY0
+0173 22               50                     RET
+0174 75A066           51             K4:MOV P2,#66H
+A51 MACRO ASSEMBLER  ________                                                             05/17/2023 14:38:49 PAGE     2
+
+0177 31D4             52                     ACALL YSH1S
+0179 2103             53                     AJMP KEY0
+017B 22               54                     RET
+017C 75A06D           55             K5:MOV P2,#6DH
+017F 31D4             56                     ACALL YSH1S
+0181 2103             57                     AJMP KEY0
+0183 22               58                     RET
+0184 75A07D           59             K6:MOV P2,#7DH
+0187 31D4             60                     ACALL YSH1S
+0189 2103             61                     AJMP KEY0
+018B 22               62                     RET
+018C 75A007           63             K7:MOV P2,#07H
+018F 31D4             64                     ACALL YSH1S
+0191 2103             65                     AJMP KEY0
+0193 22               66                     RET
+0194 75A07F           67             K8:MOV P2,#7FH
+0197 31D4             68                     ACALL YSH1S
+0199 2103             69                     AJMP KEY0
+019B 22               70                     RET
+019C 75A06F           71             K9:MOV P2,#6FH
+019F 31D4             72                     ACALL YSH1S
+01A1 2103             73                     AJMP KEY0
+01A3 22               74                     RET
+01A4 75A077           75             K10:MOV P2,#77H
+01A7 31D4             76                     ACALL YSH1S
+01A9 2103             77                     AJMP KEY0
+01AB 22               78                     RET
+01AC 75A07C           79             K11:MOV P2,#7CH
+01AF 31D4             80                     ACALL YSH1S
+01B1 2103             81                     AJMP KEY0
+01B3 22               82                     RET
+01B4 75A039           83             K12:MOV P2,#39H
+01B7 31D4             84                     ACALL YSH1S
+01B9 2103             85                     AJMP KEY0
+01BB 22               86                     RET
+01BC 75A05E           87             K13:MOV P2,#5EH
+01BF 31D4             88                     ACALL YSH1S
+01C1 2103             89                     AJMP KEY0
+01C3 22               90                     RET
+01C4 75A079           91             K14:MOV P2,#79H
+01C7 31D4             92                     ACALL YSH1S
+01C9 2103             93                     AJMP KEY0
+01CB 22               94                     RET
+01CC 75A071           95             K15:MOV P2,#71H
+01CF 31D4             96                     ACALL YSH1S
+01D1 2103             97                     AJMP KEY0
+01D3 22               98                     RET
+01D4 7B05             99             YSH1S:MOV R3,#05H
+01D6 7CA8            100             LOOP:MOV R4,#0A8H
+01D8 7D8A            101             LOOP1:MOV R5,#8AH
+01DA DDFE            102             XHD:DJNZ R5,XHD
+01DC DCFA            103                     DJNZ R4,LOOP1
+01DE DBF6            104                     DJNZ R3,LOOP
+01E0 22              105                     RET
+                     106     END
+A51 MACRO ASSEMBLER  ________                                                             05/17/2023 14:38:49 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+COL0 . . . . . . .  C ADDR   0114H   A   
+COL1 . . . . . . .  C ADDR   0124H   A   
+COL2 . . . . . . .  C ADDR   0134H   A   
+COL3 . . . . . . .  C ADDR   0144H   A   
+K0 . . . . . . . .  C ADDR   0154H   A   
+K1 . . . . . . . .  C ADDR   015CH   A   
+K10. . . . . . . .  C ADDR   01A4H   A   
+K11. . . . . . . .  C ADDR   01ACH   A   
+K12. . . . . . . .  C ADDR   01B4H   A   
+K13. . . . . . . .  C ADDR   01BCH   A   
+K14. . . . . . . .  C ADDR   01C4H   A   
+K15. . . . . . . .  C ADDR   01CCH   A   
+K2 . . . . . . . .  C ADDR   0164H   A   
+K3 . . . . . . . .  C ADDR   016CH   A   
+K4 . . . . . . . .  C ADDR   0174H   A   
+K5 . . . . . . . .  C ADDR   017CH   A   
+K6 . . . . . . . .  C ADDR   0184H   A   
+K7 . . . . . . . .  C ADDR   018CH   A   
+K8 . . . . . . . .  C ADDR   0194H   A   
+K9 . . . . . . . .  C ADDR   019CH   A   
+KEY0 . . . . . . .  C ADDR   0103H   A   
+LOOP . . . . . . .  C ADDR   01D6H   A   
+LOOP1. . . . . . .  C ADDR   01D8H   A   
+MAIN . . . . . . .  C ADDR   0100H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+XHD. . . . . . . .  C ADDR   01DAH   A   
+YSH1S. . . . . . .  C ADDR   01D4H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 3 ERROR(S)

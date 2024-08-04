@@ -1,0 +1,96 @@
+C51 COMPILER V9.54   DA____                                                                06/08/2023 16:20:17 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE DA____
+OBJECT MODULE PLACED IN .\Objects\da转换.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE da转换.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\da
+                    -转换.lst) TABS(2) OBJECT(.\Objects\da转换.obj)
+
+line level    source
+
+   1          #include <REGX51.H>
+   2          #include <absacc.h>
+   3          #include <math.h>
+   4          #define DAC0832 XBYTE[0X7FFF]
+   5          code unsigned char Sin[128]={64,67,70,73,76,79,82,85,88,91,94,96,99,102,104,106,109,111,113,115,117,
+   6          118,120,121,123,124,125,126,126,127,127,127,127,127,127,127,126,126,125,124,123,121,120,118,
+   7          117,115,113,111,109,106,104,102,99,96,94,91,88,85,82,79,76,73,70,67,64,60,57,54,51,48,45,42,39,
+   8          36,33,31,28,25,23,21,18,16,14,12,10,9,7,6,4,3,2,1,1,0,0,0,0,0,0,0,1,1,2,3,4,
+   9          6,7,9,10,12,14,16,18,21,23,25,28,31,33,36,39,42,45,48,51,54,57,60};
+  10          void delay(unsigned int j)
+  11          {
+  12   1        while(j--);
+  13   1      }
+  14          void fangbo()
+  15          {
+  16   1        while(P1==0xfe)
+  17   1        {
+  18   2          DAC0832=0xff;
+  19   2          delay(500);
+  20   2          DAC0832=0x00;
+  21   2          delay(500);
+  22   2        }
+  23   1      }
+  24          void sanjiao()
+  25          {
+  26   1        unsigned int i;
+  27   1        while(P1==0xfd)
+  28   1        {
+  29   2          for(i=0;i<255;i++);
+  30   2          DAC0832=i;
+  31   2          for(i=255;i>0;i--);
+  32   2          DAC0832=i;
+  33   2          DAC0832=0;
+  34   2        }
+  35   1      }
+  36          void juchi()
+  37          {
+  38   1        int i;
+  39   1        while(P1==0xfb)
+  40   1        {
+  41   2          for(i=0;i<255;i++);
+  42   2          DAC0832=i;
+  43   2        }
+  44   1      }
+  45          void zhengxian()
+  46          {
+  47   1        int i;
+  48   1        while(P1==0xf7)
+  49   1        {
+  50   2          for(i=0;i<128;i++)
+  51   2            DAC0832=Sin[i];
+  52   2        }
+  53   1      }
+  54          void main()
+C51 COMPILER V9.54   DA____                                                                06/08/2023 16:20:17 PAGE 2   
+
+  55          {
+  56   1        char a;
+  57   1        P1=0xff;
+  58   1        while(1)
+  59   1        {
+  60   2          a=P1;
+  61   2          switch(a)
+  62   2          {
+  63   3            case 0xfe:fangbo();break;
+  64   3            case 0xfd:sanjiao();break;
+  65   3            case 0xfb:juchi();break;
+  66   3            case 0xf7:zhengxian();break;
+  67   3            default:break;
+  68   3          }
+  69   2        }
+  70   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    197    ----
+   CONSTANT SIZE    =    128    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

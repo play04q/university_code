@@ -1,0 +1,97 @@
+C51 COMPILER V9.54   L298____                                                              01/13/2024 17:23:45 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE L298____
+OBJECT MODULE PLACED IN .\Objects\L298直流.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE L298直流.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\
+                    -L298直流.lst) TABS(2) OBJECT(.\Objects\L298直流.obj)
+
+line level    source
+
+   1          #include <REGX51.H>
+   2          char cycle=100;
+   3          char speed=50;
+   4          sbit IN1=P2^0;
+   5          sbit IN2=P2^1;
+   6          sbit ENA=P2^2;
+   7          void zz()
+   8          {
+   9   1        IN1=1;
+  10   1        IN2=0;
+  11   1      }
+  12          void fz()
+  13          {
+  14   1        IN1=0;
+  15   1        IN2=1;
+  16   1      }
+  17          void stop()
+  18          {
+  19   1        IN1=0;
+  20   1        IN2=0;
+  21   1      }
+  22          void t0() interrupt 1 using 1
+  23          {
+  24   1        if(cycle>100)
+  25   1          cycle=0;
+  26   1        if(cycle>speed)
+  27   1          ENA=0;
+  28   1        else
+  29   1          ENA=1;
+  30   1        cycle++;
+  31   1      }
+  32          void speedup()
+  33          {
+  34   1        if(speed>99)
+  35   1          speed=0;
+  36   1        else
+  37   1          speed++;
+  38   1      }
+  39          void speeddown()
+  40          {
+  41   1        if(speed>1)
+  42   1          speed=0;
+  43   1        else
+  44   1          speed--;
+  45   1      }
+  46          void main()
+  47          {
+  48   1        EA=1;
+  49   1        EX0=1;
+  50   1        IT0=1;
+  51   1        TMOD=0x02;
+  52   1        TH0=0x06;
+  53   1        TL0=0x06;
+  54   1        TR0=1;
+C51 COMPILER V9.54   L298____                                                              01/13/2024 17:23:45 PAGE 2   
+
+  55   1        ET0=1;
+  56   1        PX0=1;
+  57   1        P1=0xff;
+  58   1        while(1);
+  59   1      }
+  60          void int0() interrupt 0 using 0
+  61          {
+  62   1        switch(P1)
+  63   1        {
+  64   2          case 0xfe:zz();break;
+  65   2          case 0xfd:fz();break;
+  66   2          case 0xfb:stop();break;
+  67   2          case 0xf7:speedup();break;
+  68   2          case 0xef:speeddown();break;
+  69   2          default:P1=0xff;break;
+  70   2        }
+  71   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    180    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      2    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

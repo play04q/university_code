@@ -1,0 +1,35 @@
+A51 MACRO ASSEMBLER  ________                                                             03/30/2023 16:08:17 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\置位程序.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE 置位程序.asm SET(SMALL) DEBUG PRINT(.\Listings\置位程序.lst) OBJECT(.\O
+                      bjects\置位程序.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0030                   1     ORG 0030H
+0030 7800              2             MOV  R0, #00
+0032 7920              3             MOV  R1, #20H
+0034 74FF              4             SETD: MOV  A, #0FFH
+0036 F7                5             MOV  @R1,A
+0037 09                6             INC  R1
+0038 08                7             INC  R0
+0039 B828F8            8             CJNE R0, #40, SETD
+003C 80FE              9             SJMP $
+                      10     END
+A51 MACRO ASSEMBLER  ________                                                             03/30/2023 16:08:17 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+SETD . . . . . . .  C ADDR   0034H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

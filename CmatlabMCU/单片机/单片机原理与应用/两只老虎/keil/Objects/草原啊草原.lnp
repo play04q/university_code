@@ -1,0 +1,3 @@
+".\Objects\草原啊草原.obj" 
+TO ".\Objects\草原啊草原" 
+PRINT(".\Listings\草原啊草原.m51") RAMSIZE(256) 

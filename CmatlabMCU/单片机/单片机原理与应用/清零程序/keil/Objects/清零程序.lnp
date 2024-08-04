@@ -1,0 +1,3 @@
+".\Objects\清零程序.obj" 
+TO ".\Objects\清零程序" 
+PRINT(".\Listings\清零程序.m51")

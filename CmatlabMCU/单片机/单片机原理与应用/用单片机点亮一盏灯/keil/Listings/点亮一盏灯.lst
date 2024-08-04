@@ -1,0 +1,30 @@
+A51 MACRO ASSEMBLER  __________                                                           03/23/2023 16:01:14 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\点亮一盏灯.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE 点亮一盏灯.asm SET(SMALL) DEBUG PRINT(.\Listings\点亮一盏灯.lst) OBJECT
+                      (.\Objects\点亮一盏灯.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0030                   1     ORG 0030H
+0030 74FF              2     MOV A, # 0FFH
+0032 F590              3     MOV P1,A
+0034 C290              4     CLR P1.0
+                       5     END
+A51 MACRO ASSEMBLER  __________                                                           03/23/2023 16:01:14 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+P1 . . . . . . . .  D ADDR   0090H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

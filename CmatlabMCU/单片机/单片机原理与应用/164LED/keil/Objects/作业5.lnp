@@ -1,0 +1,3 @@
+".\Objects\作业5改.obj" 
+TO ".\Objects\作业5" 
+PRINT(".\Listings\作业5.m51")

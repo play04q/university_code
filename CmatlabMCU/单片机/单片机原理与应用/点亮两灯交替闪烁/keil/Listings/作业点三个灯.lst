@@ -1,0 +1,62 @@
+A51 MACRO ASSEMBLER  ____________                                                         04/20/2023 18:12:49 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\作业点三个灯.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE 作业点三个灯.ASM SET(SMALL) DEBUG PRINT(.\Listings\作业点三个灯.lst) OB
+                      JECT(.\Objects\作业点三个灯.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0000H
+0000 020100            2             LJMP MAIN
+0100                   3             ORG 0100H
+0100 758901            4             MAIN: MOV TMOD, #01H
+0103 758C3C            5             MOV TH0, #3CH
+0106 758AB0            6             MOV TL0, #0B0H
+0109 D28C              7             SETB TR0
+010B D290              8             SETB P1.0
+010D C291              9             CLR P1.1
+010F C292             10             CLR P1.2
+0111 7F00             11             MOV R7, #00
+0113 308DFD           12             LOOP: JNB TF0, LOOP
+0116 758C3C           13             MOV TH0, #3CH
+0119 758AB0           14             MOV TL0, #0B0H
+011C 0F               15             INC R7
+011D C28D             16             CLR TF0
+011F BF14F1           17             CJNE R7, #20,LOOP
+0122 7F00             18             MOV R7, #00
+0124 B290             19             CPL P1.0
+0126 B291             20             CPL P1.1
+0128 BF14E8           21             CJNE R7, #20,LOOP
+012B 7F00             22             MOV R7, #00
+012D B292             23             CPL P1.2
+012F B291             24             CPL P1.1
+0131 BF14DF           25             CJNE R7, #20,LOOP
+0134 7F00             26             MOV R7, #00
+0136 B290             27             CPL P1.0
+0138 B292             28             CPL P1.2
+013A 2113             29             AJMP LOOP
+                      30     END
+A51 MACRO ASSEMBLER  ____________                                                         04/20/2023 18:12:49 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+LOOP . . . . . . .  C ADDR   0113H   A   
+MAIN . . . . . . .  C ADDR   0100H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+TF0. . . . . . . .  B ADDR   0088H.5 A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

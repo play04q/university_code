@@ -1,0 +1,3 @@
+".\Objects\光雷达课设.obj" 
+TO ".\Objects\光雷达" 
+PRINT(".\Listings\光雷达.m51")

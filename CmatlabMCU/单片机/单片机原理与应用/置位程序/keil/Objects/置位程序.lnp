@@ -1,0 +1,3 @@
+".\Objects\置位程序.obj" 
+TO ".\Objects\置位程序" 
+PRINT(".\Listings\置位程序.m51")

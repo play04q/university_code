@@ -1,0 +1,189 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        01/14/2024  21:44:05  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+F:\IDE\KEIL5\C51\BIN\BL51.EXE .\Objects\草原啊草原.obj TO .\Objects\草原啊草原 PRINT (.\Listings\草原啊草原.m51) RAMSIZE
+>>  (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\草原啊草原.obj (__________)
+  F:\IDE\KEIL5\C51\LIB\C51S.LIB (?C_STARTUP)
+  F:\IDE\KEIL5\C51\LIB\C51S.LIB (?C?IMUL)
+  F:\IDE\KEIL5\C51\LIB\C51S.LIB (?C?SLCMP)
+  F:\IDE\KEIL5\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  .\Objects\草原啊草原 (__________)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0002H     UNIT         ?DT?__________
+            DATA    000AH     0001H     UNIT         _DATA_GROUP_
+                    000BH     0015H                  *** GAP ***
+            BIT     0020H.0   0000H.2   UNIT         ?BI?__________
+                    0020H.2   0000H.6                *** GAP ***
+            IDATA   0021H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     0008H                  *** GAP ***
+            CODE    000BH     0003H     ABSOLUTE     
+                    000EH     07F2H                  *** GAP ***
+            CODE    0800H     00AEH     UNIT         ?PR?PLAYTWOTIGER?__________
+            CODE    08AEH     008CH     UNIT         ?C_C51STARTUP
+            CODE    093AH     005CH     UNIT         ?CO?__________
+            CODE    0996H     002BH     UNIT         ?PR?MAIN?__________
+            CODE    09C1H     0028H     UNIT         ?C?LIB_CODE
+            CODE    09E9H     0011H     UNIT         ?PR?INTERRUPTTIMER0?__________
+            CODE    09FAH     000BH     UNIT         ?C_INITSEG
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\草原啊草原 (__________)
+
+
+SEGMENT                                  DATA_GROUP 
+  +--> CALLED SEGMENT                  START    LENGTH
+------------------------------------------------------
+?C_C51STARTUP                          -----    -----
+  +--> ?PR?MAIN?__________
+  +--> ?C_INITSEG
+
+?PR?MAIN?__________                    -----    -----
+  +--> ?PR?PLAYTWOTIGER?__________
+BL51 BANKED LINKER/LOCATER V6.22                                                      01/14/2024  21:44:05  PAGE 2
+
+
+
+?PR?PLAYTWOTIGER?__________            000AH    0001H
+  +--> ?CO?__________
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\草原啊草原 (__________)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        __________
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  B:00A8H.7       PUBLIC        EA
+  C:09E9H         PUBLIC        InterruptTimer0
+  D:0008H         PUBLIC        T0RH
+  C:093AH         PUBLIC        NoteFrequ
+  D:0009H         PUBLIC        T0RL
+  C:0996H         PUBLIC        main
+  D:0089H         PUBLIC        TMOD
+  B:00A8H.1       PUBLIC        ET0
+  B:0090H.6       PUBLIC        BUZZ
+  D:008CH         PUBLIC        TH0
+  D:008AH         PUBLIC        TL0
+  C:0800H         PUBLIC        PlayTwoTiger
+  B:0088H.4       PUBLIC        TR0
+  B:0020H.0       PUBLIC        enable
+  B:0020H.1       PUBLIC        tmrflag
+  C:0956H         PUBLIC        NoteReload
+  -------         PROC          MAIN
+  -------         DO            
+  D:0082H         SYMBOL        i
+  -------         ENDDO         
+  C:0996H         LINE#         28
+  C:0996H         LINE#         29
+  C:0996H         LINE#         32
+  C:0998H         LINE#         33
+  C:099BH         LINE#         34
+  C:099EH         LINE#         35
+  C:09A1H         LINE#         36
+  C:09A3H         LINE#         37
+  C:09A5H         LINE#         39
+  C:09A5H         LINE#         40
+  C:09A5H         LINE#         41
+  C:09A8H         LINE#         42
+  -------         ENDPROC       MAIN
+  -------         PROC          PLAYTWOTIGER
+  -------         DO            
+  D:0001H         SYMBOL        beat
+  D:000AH         SYMBOL        note
+  D:0002H         SYMBOL        time
+  D:0004H         SYMBOL        beatTime
+  D:0006H         SYMBOL        soundTime
+  C:0972H         SYMBOL        TwoTigerNote
+  C:0976H         SYMBOL        TwoTigerBeat
+  -------         ENDDO         
+BL51 BANKED LINKER/LOCATER V6.22                                                      01/14/2024  21:44:05  PAGE 3
+
+
+  C:0800H         LINE#         46
+  C:0800H         LINE#         47
+  C:0800H         LINE#         50
+  C:0803H         LINE#         51
+  C:0805H         LINE#         52
+  C:0807H         LINE#         63
+  C:0811H         LINE#         64
+  C:0811H         LINE#         65
+  C:0814H         LINE#         66
+  C:0816H         LINE#         67
+  C:081AH         LINE#         68
+  C:081AH         LINE#         69
+  C:0822H         LINE#         70
+  C:0831H         LINE#         71
+  C:0843H         LINE#         73
+  C:086FH         LINE#         75
+  C:0880H         LINE#         76
+  C:0882H         LINE#         77
+  C:0887H         LINE#         78
+  C:088AH         LINE#         80
+  C:088AH         LINE#         81
+  C:0891H         LINE#         82
+  C:0891H         LINE#         83
+  C:0894H         LINE#         84
+  C:0895H         LINE#         85
+  C:0898H         LINE#         87
+  C:0898H         LINE#         88
+  C:089DH         LINE#         89
+  C:08A8H         LINE#         90
+  C:08A8H         LINE#         91
+  C:08AAH         LINE#         92
+  C:08AAH         LINE#         93
+  C:08AAH         LINE#         94
+  C:08AAH         LINE#         95
+  C:08ADH         LINE#         96
+  -------         ENDPROC       PLAYTWOTIGER
+  -------         PROC          INTERRUPTTIMER0
+  C:09E9H         LINE#         98
+  C:09E9H         LINE#         100
+  C:09ECH         LINE#         101
+  C:09EFH         LINE#         102
+  C:09F1H         LINE#         103
+  C:09F4H         LINE#         104
+  C:09F7H         LINE#         106
+  C:09F9H         LINE#         107
+  -------         ENDPROC       INTERRUPTTIMER0
+  -------         ENDMOD        __________
+
+  -------         MODULE        ?C?IMUL
+  C:09C1H         PUBLIC        ?C?IMUL
+  -------         ENDMOD        ?C?IMUL
+
+  -------         MODULE        ?C?SLCMP
+  C:09D3H         PUBLIC        ?C?SLCMP
+  -------         ENDMOD        ?C?SLCMP
+
+******************************************************************************
+BL51 BANKED LINKER/LOCATER V6.22                                                      01/14/2024  21:44:05  PAGE 4
+
+
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0153H BYTE (16%) *
+******************************************************************************
+
+Program Size: data=12.2 xdata=0 code=523
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

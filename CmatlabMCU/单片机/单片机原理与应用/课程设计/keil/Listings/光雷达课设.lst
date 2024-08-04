@@ -1,0 +1,173 @@
+C51 COMPILER V9.54   __________                                                            06/07/2023 17:05:07 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE __________
+OBJECT MODULE PLACED IN .\Objects\光雷达课设.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE 光雷达课设.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listing
+                    -s\光雷达课设.lst) TABS(2) OBJECT(.\Objects\光雷达课设.obj)
+
+line level    source
+
+   1          #include <REGX51.H>
+   2          #define uchar unsigned char
+   3          sbit start=P0^0;
+   4          sbit eoc=P0^2;
+   5          sbit oe=P0^1;
+   6          sbit clock=P0^3;
+   7          sbit l1=P0^4;
+   8          sbit l2=P0^5;
+   9          sbit l3=P0^6;
+  10          sbit l4=P0^7;
+  11          sbit arm=P1^2;
+  12          sbit safe=P1^0;
+  13          const char tab[]={0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,0x7f,0x6f};
+  14          void int1() interrupt 1 using 1
+  15          {
+  16   1        clock=~clock;
+  17   1      }
+  18          void armf()
+  19          {
+  20   1        if(safe==0)
+  21   1        {
+  22   2          arm=1;
+  23   2          P1_1=1;
+  24   2        }
+  25   1        else
+  26   1        {
+  27   2          arm=0;
+  28   2          P1_1=0;
+  29   2        }
+  30   1      }
+  31          void main()
+  32          {
+  33   1        uchar date;
+  34   1        uchar miwei=6000;
+  35   1        double ddate;
+  36   1        uchar qw,bw,sw,gw;
+  37   1        uchar i;
+  38   1        //
+  39   1        SCON=0x00;
+  40   1        l1=l2=l3=l4=0;
+  41   1        SBUF=0x3f;
+  42   1        while(TI==0);
+  43   1        TI=0;
+  44   1        //
+  45   1        TMOD=0x02;
+  46   1        TH0=246;
+  47   1        TL0=246;
+  48   1        IE=0x82;
+  49   1        TR0=1;
+  50   1        while(1)
+  51   1        {
+  52   2          start=0;
+  53   2          start=1;
+  54   2          start=0;
+C51 COMPILER V9.54   __________                                                            06/07/2023 17:05:07 PAGE 2   
+
+  55   2          for(i=0;i<20;i++);
+  56   2          while(eoc==0)
+  57   2          oe=1;
+  58   2          date=P2;
+  59   2          oe=0;
+  60   2          ddate=date;
+  61   2          ddate=(ddate/255)*miwei;
+  62   2          date=ddate;
+  63   2          qw=date%1000;
+  64   2          bw=(date-qw*1000)%100;
+  65   2          sw=(date-qw*1000-bw*100)%10;
+  66   2          gw=date-qw*1000-bw*100-sw*10;
+  67   2          if(qw)
+  68   2          {
+  69   3            l1=0;
+  70   3            SBUF=tab[qw];
+  71   3            while(TI==0);
+  72   3            TI=0;
+  73   3            for(i=0;i<25;i++);
+  74   3            l1=1;
+  75   3          }
+  76   2          else
+  77   2          {
+  78   3            l1=0;
+  79   3            SBUF=0x3f;
+  80   3            while(TI==0);
+  81   3            TI=0;
+  82   3            for(i=0;i<25;i++);
+  83   3            l1=1;
+  84   3          }
+  85   2          if(qw==0)
+  86   2          {
+  87   3            if(bw)
+  88   3            {
+  89   4              l2=0;
+  90   4              SBUF=tab[bw];
+  91   4              while(TI==0);
+  92   4              TI=0;
+  93   4              for(i=0;i<25;i++);
+  94   4              l2=1;
+  95   4            }
+  96   3            else
+  97   3            {
+  98   4              l2=0;
+  99   4              SBUF=0x3f;
+ 100   4              while(TI==0);
+ 101   4              TI=0;
+ 102   4              for(i=0;i<25;i++);
+ 103   4              l2=1;
+ 104   4            }
+ 105   3            if(bw==0)
+ 106   3            {
+ 107   4              if(sw)
+ 108   4              {
+ 109   5                l3=0;
+ 110   5                SBUF=tab[sw];
+ 111   5                while(TI==0);
+ 112   5                TI=0;
+ 113   5                for(i=0;i<25;i++);
+ 114   5                l3=1;
+ 115   5              }
+ 116   4              else
+C51 COMPILER V9.54   __________                                                            06/07/2023 17:05:07 PAGE 3   
+
+ 117   4              {
+ 118   5                l3=0;
+ 119   5                SBUF=0x3f;
+ 120   5                while(TI==0);
+ 121   5                TI=0;
+ 122   5                for(i=0;i<25;i++);
+ 123   5                l3=1;
+ 124   5              }
+ 125   4            }
+ 126   3          }
+ 127   2          else
+ 128   2          {
+ 129   3            l2=0;
+ 130   3            SBUF=tab[bw];
+ 131   3            while(TI==0);
+ 132   3            TI=0;
+ 133   3            for(i=0;i<25;i++);
+ 134   3            l2=1;
+ 135   3          }
+ 136   2          l4=0;
+ 137   2          SBUF=tab[gw];
+ 138   2          while(TI==0);
+ 139   2          TI=0;
+ 140   2          for(i=0;i<25;i++);
+ 141   2          l4=1;
+ 142   2        }
+ 143   1        armf();
+ 144   1      }
+*** WARNING C294 IN LINE 143 OF 光雷达课设.c: unreachable code
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    457    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     10       3
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

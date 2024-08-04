@@ -1,0 +1,47 @@
+A51 MACRO ASSEMBLER  ______                                                               04/12/2023 14:10:44 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\·äÃùÆ÷.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE ·äÃùÆ÷.ASM SET(SMALL) DEBUG PRINT(.\Listings\·äÃùÆ÷.lst) OBJECT(.\Objec
+                      ts\·äÃùÆ÷.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0030                   1     ORG 0030H
+0030 74FF              2             MOV A,#0FFH
+0032 F590              3             MOV P1,A
+0034 2090FD            4             LOOP: JB P1.0,LOOP
+0037 B291              5             CPL P1.1
+0039 D287              6             SETB P0.7
+003B 120045            7             LCALL DELAY
+003E C287              8             CLR P0.7
+0040 120045            9             LCALL DELAY
+0043 0134             10             AJMP LOOP
+0045 7FC8             11             DELAY: MOV R7,#200
+0047 7EF8             12             D1: MOV R6,#248
+0049 DEFE             13             D2: DJNZ R6,$
+004B DFFA             14                     DJNZ R7,D1
+004D 22               15                     RET
+                      16     END
+                                                
+A51 MACRO ASSEMBLER  ______                                                               04/12/2023 14:10:44 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+D1 . . . . . . . .  C ADDR   0047H   A   
+D2 . . . . . . . .  C ADDR   0049H   A   
+DELAY. . . . . . .  C ADDR   0045H   A   
+LOOP . . . . . . .  C ADDR   0034H   A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

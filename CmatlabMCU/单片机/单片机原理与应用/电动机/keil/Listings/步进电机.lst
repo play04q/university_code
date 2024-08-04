@@ -1,0 +1,108 @@
+C51 COMPILER V9.54   ________                                                              05/31/2023 14:13:22 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE ________
+OBJECT MODULE PLACED IN .\Objects\步进电机.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE 步进电机.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\
+                    -步进电机.lst) TABS(2) OBJECT(.\Objects\步进电机.obj)
+
+line level    source
+
+   1          #include <REGX51.H>
+   2          int i=0;
+   3          char flag0=0,flag1=0;
+   4          long t=5000;
+   5          code tab[]={0x01,0x03,0x02,0x06,0x04,0x0c,0x08,0x09};//正转
+   6          code tab1[]={0x09,0x08,0x0c,0x04,0x06,0x02,0x03,0x01};//反转
+   7          void zz()
+   8          {
+   9   1        flag0=1;
+  10   1        flag1=0;
+  11   1      }
+  12          void fz()
+  13          {
+  14   1        flag0=0;
+  15   1        flag1=1;
+  16   1      }
+  17          void stop()
+  18          {
+  19   1        flag0=0;
+  20   1        flag1=0;
+  21   1      }
+  22          void speedup()
+  23          {
+  24   1        t-=100;
+  25   1        if(t<0)
+  26   1          t=0;
+  27   1      }
+  28          void speeddown()
+  29          {
+  30   1        t+=100;
+  31   1        if(t>65535)
+  32   1          t=65534;
+  33   1      }
+  34          void delay(long m)
+  35          {
+  36   1        long n;
+  37   1        for(n=0;n<m;n++);
+  38   1      }
+  39          void main()
+  40          {
+  41   1        EX0=1;
+  42   1        IT0=1;
+  43   1        EA=1;
+  44   1        P1=0xff;
+  45   1        P2=0x00;
+  46   1        while(1)
+  47   1        {
+  48   2          while(flag1==flag0)
+  49   2          {
+  50   3            P2=tab[i];
+  51   3            delay(t);
+  52   3          }
+  53   2          if(flag0==1)
+  54   2          {
+C51 COMPILER V9.54   ________                                                              05/31/2023 14:13:22 PAGE 2   
+
+  55   3            for(i=0;i<8;i++)
+  56   3            {
+  57   4              P2=tab[i];
+  58   4              delay(t);
+  59   4            }
+  60   3          }
+  61   2          if(flag1==1)
+  62   2          {
+  63   3            for(i=0;i<8;i++)
+  64   3            {
+  65   4              P2=tab1[i];
+  66   4              delay(t);
+  67   4            }
+  68   3          }
+  69   2        }
+  70   1      }
+  71          void int0() interrupt 0
+  72            {
+  73   1          switch(P1)
+  74   1          {
+  75   2            case 0xfe:zz();break;
+  76   2            case 0xfd:fz();break;
+  77   2            case 0xfb:stop();break;
+  78   2            case 0xf7:speedup();break;
+  79   2            case 0xef:speeddown();break;
+  80   2            default:P1=0xff;break;
+  81   2          }
+  82   1        }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    423    ----
+   CONSTANT SIZE    =     32    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      8       8
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

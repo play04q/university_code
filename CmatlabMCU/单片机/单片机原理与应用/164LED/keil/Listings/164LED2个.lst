@@ -1,0 +1,84 @@
+C51 COMPILER V9.54   164LED2__                                                             05/11/2023 16:26:34 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE 164LED2__
+OBJECT MODULE PLACED IN .\Objects\164LED2个.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE 164LED2个.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings
+                    -\164LED2个.lst) TABS(2) OBJECT(.\Objects\164LED2个.obj)
+
+line level    source
+
+   1          #include <REGX51.H>
+   2          #include <intrins.h>
+   3          char j;
+   4          int n;
+   5          const char tab1[]={0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,0x7f,0x6f,};
+   6          const char tab2[]={0xc0,0xf9,0xa4,0xb0,0x99,0x92,0x82,0xf8,0x80,0x90,};
+   7          /*void delay(int n)
+   8          {
+   9            int i;
+  10            for(i=0;i<n;i++);
+  11          }*/
+  12          void Delay600ms()   //@12.000MHz
+  13          {
+  14   1        unsigned char i, j, k;
+  15   1      
+  16   1        _nop_();
+  17   1        i = 5;
+  18   1        j = 144;
+  19   1        k = 71;
+  20   1        do
+  21   1        {
+  22   2          do
+  23   2          {
+  24   3            while (--k);
+  25   3          } while (--j);
+  26   2        } while (--i);
+  27   1      }
+  28          void Int0_server_() interrupt 0
+  29          {
+  30   1        char a;
+  31   1        a=tab2[j];
+  32   1        P0=a;
+  33   1      }
+  34          void Int1_server_() interrupt 2
+  35          {
+  36   1        P0=0x00;
+  37   1      }
+  38          void Init_Int()
+  39          {
+  40   1        EX0=1;
+  41   1        IT0=1;
+  42   1        EX1=1;
+  43   1        IT1=0;
+  44   1        EA=1;
+  45   1      }
+  46          void main()
+  47          {
+  48   1        P0=0x00;
+  49   1        Init_Int();
+  50   1        while(1)
+  51   1        {
+  52   2          for(j=0;j<10;j++)
+  53   2          {
+  54   3            P2=tab1[j];
+C51 COMPILER V9.54   164LED2__                                                             05/11/2023 16:26:34 PAGE 2   
+
+  55   3            Delay600ms();
+  56   3          }
+  57   2        }
+  58   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     86    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     23    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

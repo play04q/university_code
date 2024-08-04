@@ -1,0 +1,117 @@
+系统分析设计
+此系统应用由单片机最小系统，八盏LED灯，电阻，按钮等器件组成。本系统涉及两个外中断，中断优先级，LED的右移等问题，在设计中首先注意两个外中断的入口地址和中断优先级的设置，LED的右移的问题可以使用RR等逻辑操作指令实现。
+原理图设计
+如图所示
+程序流程图设计
+如图所示
+源程序设计
+C语言代码如下：
+#include <REGX51.H>
+const tab1[]={0xff,0x00,0xff,0x00,0xff,0x00,
+							0xff,0x00,0xff,0x00,0xff,0x00,};
+const tab2[]={0xfe,0xfd,0xfb,0xf7,0xef,0xdf,0xbf,0x7f,
+							0xfe,0xfd,0xfb,0xf7,0xef,0xdf,0xbf,0x7f,
+							0xfe,0xfd,0xfb,0xf7,0xef,0xdf,0xbf,0x7f,
+							0xfe,0xfd,0xfb,0xf7,0xef,0xdf,0xbf,0x7f,};
+char a;
+void delay()
+{
+	int i,j;
+	for(i=0;i<256;i++)
+	for(j=0;j<256;j++)
+	{;}
+}
+void int0() interrupt 0
+{
+		char i;
+		for(i=0;i<13;i++)
+		{
+			P0=tab1[i];
+			delay();
+		}
+}
+void int1() interrupt 2
+{
+	char i;
+	for(i=0;i<32;i++)
+	{
+		P0=tab2[i];
+		delay();
+	}
+}
+void main()
+{
+	IE=0x85;
+	IP=0x01;
+	TCON=0x00;
+	while(1)
+	{
+		char x;
+		for(x=0;x<23;x++)
+		{
+			P0=~P0;
+			delay();
+		}
+	}
+}
+汇编代码如下：
+ORG 0000H
+	AJMP START
+ORG 0003H
+	AJMP INTR0
+ORG 0013H
+	AJMP INTR1
+	START:MOV IE,#85H
+	MOV IP,#01H
+	MOV TCON,#00H
+	MOV SP,#60H
+	MOV P0,#0FFH
+	MOV P3,#0FFH
+	MOV R0, #00H
+	MOV A,#00H
+	LP1:MOV P0,A
+	LCALL DELAY
+	CPL A
+	SJMP LP1
+	INTR1:PUSH ACC
+	PUSH PSW
+	INC R0
+	MOV P0,#00H
+	MOV A,#0FFH
+	MOV R4,#03H
+	SINGLE:MOV P0,A
+	LCALL DELAY
+	SWAP A
+	DJNZ R4,SINGLE
+	AJMP EXIT
+	LP3:MOV P0,A
+	LCALL DELAY
+	RR A
+	DJNZ R2,LP3
+	EXIT:NOP
+	POP PSW
+	POP ACC
+	RETI
+	INTR0:MOV P0,#00H
+	LCALL DELAY
+	MOV P0,#0FFH
+	MOV R4,#05H
+	RETI
+	DELAY:MOV R7,#20
+	DELA1:MOV R6,#20
+	DELA2:MOV R5,#248
+	DJNZ R5,$
+	DJNZ R6,DELA2
+	DJNZ R7,DELA1
+	RET
+END
+系统仿真结果
+如图所示
+仿真结果比较好的符合要求。
+对本课程学习的感想和收获
+学习单片机需要具备良好的逻辑思维和编程基础。这门课程涉及到许多电子元器件和编程语言，在学习过程中需要理解这些概念之间的关系和联系。另外，单片机课程还需要大量的实践操作。虽然理论知识很重要，但是更重要的是要将这些知识应用到实际操作中，通过不断地尝试和调试来掌握技能。此外，学习单片机的过程需要耐心和坚持。因为该课程较为复杂，初学者可能会遇到各种困难，但只有保持耐心和不断努力，才能够掌握它。
+总的来说，单片机课程是一门非常实用的技术，对于电子、通信、计算机等领域有着广泛的应用。通过系统的学习和不断地实践，我们可以掌握单片机开发的技能，提高自己在相关领域的竞争力和职业前景。
+在学习单片机课程时，需要有坚定的信念和耐心。单片机是一门复杂而又实用的技术，需要对电子元器件、编程语言等方面有基础的认识和理解。其次，建议多做一些实践操作，不断尝试并发掘其中的问题所在，进而解决问题。通过实践操作，巩固自己的知识点，让知识更加深入人心。最后，建议老师可以通过丰富的教学资源和案例模拟，激发学生的学习兴趣，并且及时回答学生遇到的问题，帮助学生解决疑惑，还可以引导学生参与相关的项目实践，帮助学生提高技能水平。同时，也可以鼓励学生积极参与讨论和交流，相互学习，共同进步。
+学习单片机是非常有益的，我相信在张老师“能力驱动课程教学模式”的培养下，通过自身努力的学习，我可以打下坚实的技术基础并为我们未来的职业和个人项目提供有力支持。
+个人期望可以拿到一个优秀的成绩
+

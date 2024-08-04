@@ -1,0 +1,3 @@
+".\Objects\红外89c51改.obj" 
+TO ".\Objects\红外89c51改" 
+PRINT(".\Listings\红外89c51改.m51")

@@ -1,0 +1,3 @@
+".\Objects\量子U2.obj" 
+TO ".\Objects\量子U2" 
+PRINT(".\Listings\量子U2.m51")

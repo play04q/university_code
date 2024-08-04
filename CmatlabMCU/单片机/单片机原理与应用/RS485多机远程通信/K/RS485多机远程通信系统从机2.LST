@@ -1,0 +1,63 @@
+C51 COMPILER V9.00   RS485多籣远程通信系统从籣2                                            05/26/2016 14:17:37 PAGE 1   
+
+
+C51 COMPILER V9.00, COMPILATION OF MODULE RS485多籣远程通信系统从籣2
+OBJECT MODULE PLACED IN RS485多机远程通信系统从机2.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE RS485多机远程通信系统从机2.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include<reg51.h>
+   2          #include<absacc.h>
+   3          #include<intrins.h>
+   4          sbit P3_5=P3^5;                                 //控制MAX487发送（1）和接收（0）
+   5          sbit P2_0=P2^0;                                 //控制LED亮灭，通信成功显示
+   6          void serial (void) interrupt 4  //串行口中断子程序
+   7          {
+   8   1              ES=0;                                           //关闭串口中断，准备处理数据
+   9   1              RI=0;
+  10   1              if(SBUF==0x02)                          //判断从主机接收地址是否与本机一致
+  11   1              {       
+  12   2                      P2_0=~P2_0;                             //通信成功显示
+  13   2                      P3_5=1;                                 //准备向主机发送数据
+  14   2                      SBUF=0x20;                              //向主机发送数据，高4位供BCD数码管显示
+  15   2                      while(TI!=1);
+  16   2                      TI=0;
+  17   2                      SM2=0;                                  //准备接收主机TB8=0的数据
+  18   2                      //add your code here!
+  19   2              }
+  20   1              ES=1;                                           //允许串口中断
+  21   1              P3_5=0;                                         //准备从主机接收
+  22   1              SM2=1;                                          //准备从主机接收TB8=1的地址                                                     
+  23   1      }
+  24          void main(void)
+  25          {        
+  26   1              P2_0=0;
+  27   1              SCON=0xf0;              //串行口工作于方式3，REN=1可接收数据（也可发送）
+  28   1                                                      // SM2=1, 从主机接收TB8=1的地址,对TB8=0的数据不予理睬
+  29   1              TMOD=0x20;                      //定时器1自动重装载,同主机程序
+  30   1              TL1=0xfd;                       //波特率设置,同主机程序
+  31   1              TH1=0xfd;
+  32   1              TR1=1;
+  33   1              EA=1;
+  34   1              ES=1;
+  35   1              P3_5=0;                         //准备接收主机发来的地址(TB8=1)或数据(TB8=0)
+  36   1              while(1)
+  37   1              {
+  38   2                      _nop_();                        
+  39   2              }
+  40   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     63    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

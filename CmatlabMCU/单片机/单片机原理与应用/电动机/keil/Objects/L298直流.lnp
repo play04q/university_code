@@ -1,0 +1,3 @@
+".\Objects\L298直流.obj" 
+TO ".\Objects\L298直流" 
+PRINT(".\Listings\L298直流.m51")

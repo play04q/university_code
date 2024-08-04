@@ -1,0 +1,4 @@
+".\Objects\dongfanghong.obj",
+".\Objects\ykkzldx.obj" 
+TO ".\Objects\dianzidianluks" 
+PRINT(".\Listings\dianzidianluks.m51") RAMSIZE(256) 

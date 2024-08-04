@@ -1,0 +1,39 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        03/23/2023  16:01:14  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\点亮一盏灯.obj TO .\Objects\点亮一盏灯 PRINT (.\Listings\点亮一盏灯.m51)
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\点亮一盏灯.obj (__________)
+
+
+LINK MAP OF MODULE:  .\Objects\点亮一盏灯 (__________)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0036H     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\点亮一盏灯 (__________)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        __________
+  D:0090H         SYMBOL        P1
+  C:0030H         LINE#         2
+  C:0032H         LINE#         3
+  C:0034H         LINE#         4
+  -------         ENDMOD        __________
+
+Program Size: data=8.0 xdata=0 code=54
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

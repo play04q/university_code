@@ -1,0 +1,135 @@
+C51 COMPILER V9.54   __________                                                            01/14/2024 21:43:22 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE __________
+OBJECT MODULE PLACED IN .\Objects\��ԭ����ԭ.obj
+COMPILER INVOKED BY: F:\IDE\keil5\C51\BIN\C51.EXE ��ԭ����ԭ.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listi
+                    -ngs\��ԭ����ԭ.lst) TABS(2) OBJECT(.\Objects\��ԭ����ԭ.obj)
+
+line level    source
+
+   1          #include <REGX52.H>
+   2          sbit BUZZ = P1^6; //蜂鸣器控制引脚
+   3          unsigned int code NoteFrequ[] = { //中音 1-7 和高音 1-7 对应频率列表
+   4           523, 587, 659, 698, 784, 880, 988, //中音 1-7
+   5           1047, 1175, 1319, 1397, 1568, 1760, 1976 //高音 1-7
+   6          };
+   7          unsigned int code NoteReload[] = { //中音 1-7 和高音 1-7 对应的定时器重载值
+   8           65536 - (11059200/12) / (523*2), //中音 1
+   9           65536 - (11059200/12) / (587*2), //2
+  10           65536 - (11059200/12) / (659*2), //3
+  11           65536 - (11059200/12) / (698*2), //4
+  12           65536 - (11059200/12) / (784*2), //5
+  13           65536 - (11059200/12) / (880*2), //6
+  14           65536 - (11059200/12) / (988*2), //7
+  15           65536 - (11059200/12) / (1047*2), //高音 1
+  16           65536 - (11059200/12) / (1175*2), //2
+  17           65536 - (11059200/12) / (1319*2), //3
+  18           65536 - (11059200/12) / (1397*2), //4
+  19           65536 - (11059200/12) / (1568*2), //5
+  20           65536 - (11059200/12) / (1760*2), //6
+  21           65536 - (11059200/12) / (1976*2), //7
+  22          };
+  23          bit enable = 1; //蜂鸣器发声使能标志
+  24          bit tmrflag = 0; //定时器中断完成标志
+  25          unsigned char T0RH = 0xFF; //T0 重载值的高字节
+  26          unsigned char T0RL = 0x00; //T0 重载值的低字节
+  27          void PlayTwoTiger();
+  28          void main()
+  29          {
+  30   1       unsigned int i;
+  31   1      
+  32   1       EA = 1; //使能全局中断
+  33   1       TMOD = 0x01; //配置 T0 工作在模式 1
+  34   1       TH0 = T0RH;
+  35   1       TL0 = T0RL;
+  36   1       ET0 = 1; //使能 T0 中断
+  37   1       TR0 = 1; //启动 T0
+  38   1      
+  39   1       while (1)
+  40   1       {
+  41   2       PlayTwoTiger(); //播放乐曲--两支老虎
+  42   2       for (i=0; i<40000; i++); //停止一段时间
+  43   2       }
+  44   1      }
+  45          /* 两只老虎乐曲播放函数 */
+  46          void PlayTwoTiger()
+  47          {
+  48   1       unsigned char beat; //当前节拍索引
+  49   1       unsigned char note; //当前节拍对应的音符
+  50   1       unsigned int time = 0; //当前节拍计时
+  51   1       unsigned int beatTime = 0; //当前节拍总时间
+  52   1       unsigned int soundTime = 0; //当前节拍需发声时间
+  53   1       //音符表
+  54   1       unsigned char code TwoTigerNote[] = {
+C51 COMPILER V9.54   __________                                                            01/14/2024 21:43:22 PAGE 2   
+
+  55   1       6,5,6,5,
+  56   1       };
+  57   1       //节拍表，4 表示一拍，1 就是 1/4 拍，8 就是 2 拍
+  58   1       unsigned char code TwoTigerBeat[] = {
+  59   1       4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 8, 4, 4, 8,
+  60   1       3,1, 3,1, 4, 4, 3,1, 3,1, 4, 4, 4, 4, 8, 4, 4, 8,
+  61   1       };
+  62   1      
+  63   1       for (beat=0; beat<sizeof(TwoTigerNote); ) //用节拍索引作为循环变量
+  64   1       {
+  65   2        while (!tmrflag); //每次定时器中断完成后，检测并处理节拍
+  66   2       tmrflag = 0;
+  67   2       if (time == 0) //当前节拍播完则启动一个新节拍
+  68   2       {
+  69   3       note = TwoTigerNote[beat] - 1;
+  70   3       T0RH = NoteReload[note] >> 8;
+  71   3       T0RL = NoteReload[note];
+  72   3       //计算节拍总时间，右移 2 位相当于除 4，移位代替除法可以加快执行速度
+  73   3       beatTime = (TwoTigerBeat[beat] * NoteFrequ[note]) >> 2;
+  74   3       //计算发声时间，为总时间的 0.75，移位原理同上
+  75   3       soundTime = beatTime - (beatTime >> 2);
+  76   3       enable = 1; //指示蜂鸣器开始发声
+  77   3       time++;
+  78   3       }
+  79   2       else //当前节拍未播完则处理当前节拍
+  80   2       {
+  81   3       if (time >= beatTime) //当前持续时间到达节拍总时间时归零，
+  82   3       { //并递增节拍索引，以准备启动新节拍
+  83   4       time = 0;
+  84   4       beat++;
+  85   4       }
+  86   3       else //当前持续时间未达到总时间时，
+  87   3       {
+  88   4       time++; //累加时间计数
+  89   4       if (time == soundTime) //到达发声时间后，指示关闭蜂鸣器，
+  90   4       { //插入 0.25*总时间的静音间隔，
+  91   5       enable = 0; //用以区分连续的两个节拍
+  92   5       }
+  93   4       }
+  94   3       }
+  95   2       }
+  96   1      }
+  97          /* T0 中断服务函数，用于控制蜂鸣器发声 */
+  98          void InterruptTimer0() interrupt 1
+  99          {
+ 100   1       TH0 = T0RH; //重新加载重载值
+ 101   1       TL0 = T0RL;
+ 102   1       tmrflag = 1;
+ 103   1       if (enable) //使能时反转蜂鸣器控制电平
+ 104   1       BUZZ = ~BUZZ;
+ 105   1       else //未使能时关闭蜂鸣器
+ 106   1       BUZZ = 1;
+ 107   1       }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    234    ----
+   CONSTANT SIZE    =     92    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      2       1
+   IDATA SIZE       =   ----    ----
+C51 COMPILER V9.54   __________                                                            01/14/2024 21:43:22 PAGE 3   
+
+   BIT SIZE         =      2    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

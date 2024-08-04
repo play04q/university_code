@@ -1,0 +1,504 @@
+C51 COMPILER V9.54   ____5                                                                 05/17/2023 19:52:16 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE ____5
+OBJECT MODULE PLACED IN .\Objects\ื๗าต5.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ื๗าต5.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\ื๗า
+                    -ต5.lst) TABS(2) OBJECT(.\Objects\ื๗าต5.obj)
+
+line level    source
+
+   1          #include <REGX51.H>
+   2          #include <intrins.h>
+   3          const char tab[]={0x3f,0x06,0x5b,0x4f,0x66,
+   4                            0x6d,0x7d,0x07,0x7f,0x6f,0x77,
+   5                            0x7c,0x39,0x5e,0x79,0x71};
+   6          sbit led1=P3^6;
+   7          sbit led2=P3^7;
+   8          void Delay5ms()   //@12.000MHz
+   9          {
+  10   1        unsigned char i, j;
+  11   1      
+  12   1        i = 10;
+  13   1        j = 183;
+  14   1        do
+  15   1        {
+  16   2          while (--j);
+  17   2        } while (--i);
+  18   1      }
+  19          void main()
+  20          {
+  21   1        P1=0xff;
+  22   1        SCON=0x00;
+  23   1        SBUF=0x3f;
+  24   1        while(TI==0);
+  25   1        TI=0;
+  26   1        while(1)
+  27   1        {
+  28   2          if(P1==0xff)
+  29   2          {
+  30   3            led1=0;
+  31   3            SBUF=tab[1];
+  32   3            Delay5ms();
+  33   3            led1=1;
+  34   3            SBUF=0xff;
+  35   3            
+  36   3            led2=0;
+  37   3            SBUF=tab[1];
+  38   3            Delay5ms();
+  39   3            led2=1;
+  40   3            SBUF=0xff;
+  41   3          }
+  42   2          if(P1==0xef)
+  43   2          {
+  44   3            led1=0;
+  45   3            SBUF=tab[2];
+  46   3            Delay5ms();
+  47   3            led1=1;
+  48   3            SBUF=0xff;
+  49   3            
+  50   3            led2=0;
+  51   3            SBUF=tab[1];
+  52   3            Delay5ms();
+  53   3            led2=1;
+  54   3            SBUF=0xff;
+C51 COMPILER V9.54   ____5                                                                 05/17/2023 19:52:16 PAGE 2   
+
+  55   3          }
+  56   2          if(P1==0xdf)
+  57   2          {
+  58   3            led1=0;
+  59   3            SBUF=tab[3];
+  60   3            Delay5ms();
+  61   3            led1=1;
+  62   3            SBUF=0xff;
+  63   3            
+  64   3            led2=0;
+  65   3            SBUF=tab[1];
+  66   3            Delay5ms();
+  67   3            led2=1;
+  68   3            SBUF=0xff;
+  69   3          }
+  70   2          if(P1==0xcf)
+  71   2          {
+  72   3            led1=0;
+  73   3            SBUF=tab[4];
+  74   3            Delay5ms();
+  75   3            led1=1;
+  76   3            SBUF=0xff;
+  77   3            
+  78   3            led2=0;
+  79   3            SBUF=tab[1];
+  80   3            Delay5ms();
+  81   3            led2=1;
+  82   3            SBUF=0xff;
+  83   3          }
+  84   2          if(P1==0xbf)
+  85   2          {
+  86   3            led1=0;
+  87   3            SBUF=tab[5];
+  88   3            Delay5ms();
+  89   3            led1=1;
+  90   3            SBUF=0xff;
+  91   3            
+  92   3            led2=0;
+  93   3            SBUF=tab[1];
+  94   3            Delay5ms();
+  95   3            led2=1;
+  96   3            SBUF=0xff;
+  97   3          }
+  98   2          if(P1==0xaf)
+  99   2          {
+ 100   3            led1=0;
+ 101   3            SBUF=tab[6];
+ 102   3            Delay5ms();
+ 103   3            led1=1;
+ 104   3            SBUF=0xff;
+ 105   3            
+ 106   3            led2=0;
+ 107   3            SBUF=tab[1];
+ 108   3            Delay5ms();
+ 109   3            led2=1;
+ 110   3            SBUF=0xff;
+ 111   3          }
+ 112   2          if(P1==0x9f)
+ 113   2          {
+ 114   3            led1=0;
+ 115   3            SBUF=tab[7];
+ 116   3            Delay5ms();
+C51 COMPILER V9.54   ____5                                                                 05/17/2023 19:52:16 PAGE 3   
+
+ 117   3            led1=1;
+ 118   3            SBUF=0xff;
+ 119   3            
+ 120   3            led2=0;
+ 121   3            SBUF=tab[1];
+ 122   3            Delay5ms();
+ 123   3            led2=1;
+ 124   3            SBUF=0xff;
+ 125   3          }   
+ 126   2          if(P1==0x8f)
+ 127   2          {
+ 128   3            led1=0;
+ 129   3            SBUF=tab[8];
+ 130   3            Delay5ms();
+ 131   3            led1=1;
+ 132   3            SBUF=0xff;
+ 133   3            
+ 134   3            led2=0;
+ 135   3            SBUF=tab[1];
+ 136   3            Delay5ms();
+ 137   3            led2=1;
+ 138   3            SBUF=0xff;
+ 139   3          }
+ 140   2          if(P1==0x7f)
+ 141   2          {
+ 142   3            led1=0;
+ 143   3            SBUF=tab[9];
+ 144   3            Delay5ms();
+ 145   3            led1=1;
+ 146   3            SBUF=0xff;
+ 147   3            
+ 148   3            led2=0;
+ 149   3            SBUF=tab[1];
+ 150   3            Delay5ms();
+ 151   3            led2=1;
+ 152   3            SBUF=0xff;
+ 153   3          }
+ 154   2          if(P1==0x6f)
+ 155   2          {
+ 156   3            led1=0;
+ 157   3            SBUF=tab[10];
+ 158   3            Delay5ms();
+ 159   3            led1=1;
+ 160   3            SBUF=0xff;
+ 161   3            
+ 162   3            led2=0;
+ 163   3            SBUF=tab[1];
+ 164   3            Delay5ms();
+ 165   3            led2=1;
+ 166   3            SBUF=0xff;
+ 167   3          }
+ 168   2          if(P1==0x5f)
+ 169   2          {
+ 170   3            led1=0;
+ 171   3            SBUF=tab[11];
+ 172   3            Delay5ms();
+ 173   3            led1=1;
+ 174   3            SBUF=0xff;
+ 175   3            
+ 176   3            led2=0;
+ 177   3            SBUF=tab[1];
+ 178   3            Delay5ms();
+C51 COMPILER V9.54   ____5                                                                 05/17/2023 19:52:16 PAGE 4   
+
+ 179   3            led2=1;
+ 180   3            SBUF=0xff;
+ 181   3          }
+ 182   2          if(P1==0x4f)
+ 183   2          {
+ 184   3            led1=0;
+ 185   3            SBUF=tab[12];
+ 186   3            Delay5ms();
+ 187   3            led1=1;
+ 188   3            SBUF=0xff;
+ 189   3            
+ 190   3            led2=0;
+ 191   3            SBUF=tab[1];
+ 192   3            Delay5ms();
+ 193   3            led2=1;
+ 194   3            SBUF=0xff;
+ 195   3          }
+ 196   2          if(P1==0x3f)
+ 197   2          {
+ 198   3            led1=0;
+ 199   3            SBUF=tab[13];
+ 200   3            Delay5ms();
+ 201   3            led1=1;
+ 202   3            SBUF=0xff;
+ 203   3            
+ 204   3            led2=0;
+ 205   3            SBUF=tab[1];
+ 206   3            Delay5ms();
+ 207   3            led2=1;
+ 208   3            SBUF=0xff;
+ 209   3          }
+ 210   2          if(P1==0x2f)
+ 211   2          {
+ 212   3            led1=0;
+ 213   3            SBUF=tab[14];
+ 214   3            Delay5ms();
+ 215   3            led1=1;
+ 216   3            SBUF=0xff;
+ 217   3            
+ 218   3            led2=0;
+ 219   3            SBUF=tab[1];
+ 220   3            Delay5ms();
+ 221   3            led2=1;
+ 222   3            SBUF=0xff;
+ 223   3          }
+ 224   2          if(P1==0x1f)
+ 225   2          {
+ 226   3            led1=0;
+ 227   3            SBUF=tab[15];
+ 228   3            Delay5ms();
+ 229   3            led1=1;
+ 230   3            SBUF=0xff;
+ 231   3            
+ 232   3            led2=0;
+ 233   3            SBUF=tab[1];
+ 234   3            Delay5ms();
+ 235   3            led2=1;
+ 236   3            SBUF=0xff;
+ 237   3          }
+ 238   2          if(P1==0x0f)
+ 239   2          {
+ 240   3            led1=0;
+C51 COMPILER V9.54   ____5                                                                 05/17/2023 19:52:16 PAGE 5   
+
+ 241   3            SBUF=tab[16];
+ 242   3            Delay5ms();
+ 243   3            led1=1;
+ 244   3            SBUF=0xff;
+ 245   3            
+ 246   3            led2=0;
+ 247   3            SBUF=tab[1];
+ 248   3            Delay5ms();
+ 249   3            led2=1;
+ 250   3            SBUF=0xff;
+ 251   3          }
+ 252   2          
+ 253   2          /*---------QAQ---------*/
+ 254   2          
+ 255   2          if(P1==0xfe)
+ 256   2          {
+ 257   3            led1=0;
+ 258   3            SBUF=tab[1];
+ 259   3            Delay5ms();
+ 260   3            led1=1;
+ 261   3            SBUF=0xff;
+ 262   3            
+ 263   3            led2=0;
+ 264   3            SBUF=tab[2];
+ 265   3            Delay5ms();
+ 266   3            led2=1;
+ 267   3            SBUF=0xff;
+ 268   3          }
+ 269   2          if(P1==0xfd)
+ 270   2          {
+ 271   3            led1=0;
+ 272   3            SBUF=tab[1];
+ 273   3            Delay5ms();
+ 274   3            led1=1;
+ 275   3            SBUF=0xff;
+ 276   3            
+ 277   3            led2=0;
+ 278   3            SBUF=tab[3];
+ 279   3            Delay5ms();
+ 280   3            led2=1;
+ 281   3            SBUF=0xff;
+ 282   3          }
+ 283   2          if(P1==0xfc)
+ 284   2          {
+ 285   3            led1=0;
+ 286   3            SBUF=tab[1];
+ 287   3            Delay5ms();
+ 288   3            led1=1;
+ 289   3            SBUF=0xff;
+ 290   3            
+ 291   3            led2=0;
+ 292   3            SBUF=tab[4];
+ 293   3            Delay5ms();
+ 294   3            led2=1;
+ 295   3            SBUF=0xff;
+ 296   3          }
+ 297   2          if(P1==0xfb)
+ 298   2          {
+ 299   3            led1=0;
+ 300   3            SBUF=tab[1];
+ 301   3            Delay5ms();
+ 302   3            led1=1;
+C51 COMPILER V9.54   ____5                                                                 05/17/2023 19:52:16 PAGE 6   
+
+ 303   3            SBUF=0xff;
+ 304   3            
+ 305   3            led2=0;
+ 306   3            SBUF=tab[5];
+ 307   3            Delay5ms();
+ 308   3            led2=1;
+ 309   3            SBUF=0xff;
+ 310   3          }
+ 311   2          if(P1==0xfa)
+ 312   2          {
+ 313   3            led1=0;
+ 314   3            SBUF=tab[1];
+ 315   3            Delay5ms();
+ 316   3            led1=1;
+ 317   3            SBUF=0xff;
+ 318   3            
+ 319   3            led2=0;
+ 320   3            SBUF=tab[6];
+ 321   3            Delay5ms();
+ 322   3            led2=1;
+ 323   3            SBUF=0xff;
+ 324   3          }
+ 325   2          if(P1==0x9f)
+ 326   2          {
+ 327   3            led1=0;
+ 328   3            SBUF=tab[1];
+ 329   3            Delay5ms();
+ 330   3            led1=1;
+ 331   3            SBUF=0xff;
+ 332   3            
+ 333   3            led2=0;
+ 334   3            SBUF=tab[7];
+ 335   3            Delay5ms();
+ 336   3            led2=1;
+ 337   3            SBUF=0xff;
+ 338   3          }   
+ 339   2          if(P1==0xf8)
+ 340   2          {
+ 341   3            led1=0;
+ 342   3            SBUF=tab[1];
+ 343   3            Delay5ms();
+ 344   3            led1=1;
+ 345   3            SBUF=0xff;
+ 346   3            
+ 347   3            led2=0;
+ 348   3            SBUF=tab[8];
+ 349   3            Delay5ms();
+ 350   3            led2=1;
+ 351   3            SBUF=0xff;
+ 352   3          }
+ 353   2          if(P1==0xf7)
+ 354   2          {
+ 355   3            led1=0;
+ 356   3            SBUF=tab[1];
+ 357   3            Delay5ms();
+ 358   3            led1=1;
+ 359   3            SBUF=0xff;
+ 360   3            
+ 361   3            led2=0;
+ 362   3            SBUF=tab[9];
+ 363   3            Delay5ms();
+ 364   3            led2=1;
+C51 COMPILER V9.54   ____5                                                                 05/17/2023 19:52:16 PAGE 7   
+
+ 365   3            SBUF=0xff;
+ 366   3          }
+ 367   2          if(P1==0xf6)
+ 368   2          {
+ 369   3            led1=0;
+ 370   3            SBUF=tab[1];
+ 371   3            Delay5ms();
+ 372   3            led1=1;
+ 373   3            SBUF=0xff;
+ 374   3            
+ 375   3            led2=0;
+ 376   3            SBUF=tab[10];
+ 377   3            Delay5ms();
+ 378   3            led2=1;
+ 379   3            SBUF=0xff;
+ 380   3          }
+ 381   2          if(P1==0x5f)
+ 382   2          {
+ 383   3            led1=0;
+ 384   3            SBUF=tab[1];
+ 385   3            Delay5ms();
+ 386   3            led1=1;
+ 387   3            SBUF=0xff;
+ 388   3            
+ 389   3            led2=0;
+ 390   3            SBUF=tab[11];
+ 391   3            Delay5ms();
+ 392   3            led2=1;
+ 393   3            SBUF=0xff;
+ 394   3          }
+ 395   2          if(P1==0xf4)
+ 396   2          {
+ 397   3            led1=0;
+ 398   3            SBUF=tab[1];
+ 399   3            Delay5ms();
+ 400   3            led1=1;
+ 401   3            SBUF=0xff;
+ 402   3            
+ 403   3            led2=0;
+ 404   3            SBUF=tab[12];
+ 405   3            Delay5ms();
+ 406   3            led2=1;
+ 407   3            SBUF=0xff;
+ 408   3          }
+ 409   2          if(P1==0xf3)
+ 410   2          {
+ 411   3            led1=0;
+ 412   3            SBUF=tab[1];
+ 413   3            Delay5ms();
+ 414   3            led1=1;
+ 415   3            SBUF=0xff;
+ 416   3            
+ 417   3            led2=0;
+ 418   3            SBUF=tab[13];
+ 419   3            Delay5ms();
+ 420   3            led2=1;
+ 421   3            SBUF=0xff;
+ 422   3          }
+ 423   2          if(P1==0xf2)
+ 424   2          {
+ 425   3            led1=0;
+ 426   3            SBUF=tab[1];
+C51 COMPILER V9.54   ____5                                                                 05/17/2023 19:52:16 PAGE 8   
+
+ 427   3            Delay5ms();
+ 428   3            led1=1;
+ 429   3            SBUF=0xff;
+ 430   3            
+ 431   3            led2=0;
+ 432   3            SBUF=tab[14];
+ 433   3            Delay5ms();
+ 434   3            led2=1;
+ 435   3            SBUF=0xff;
+ 436   3          }
+ 437   2          if(P1==0xf1)
+ 438   2          {
+ 439   3            led1=0;
+ 440   3            SBUF=tab[1];
+ 441   3            Delay5ms();
+ 442   3            led1=1;
+ 443   3            SBUF=0xff;
+ 444   3            
+ 445   3            led2=0;
+ 446   3            SBUF=tab[15];
+ 447   3            Delay5ms();
+ 448   3            led2=1;
+ 449   3            SBUF=0xff;
+ 450   3          }
+ 451   2          if(P1==0xf0)
+ 452   2          {
+ 453   3            led1=0;
+ 454   3            SBUF=tab[1];
+ 455   3            Delay5ms();
+ 456   3            led1=1;
+ 457   3            SBUF=0xff;
+ 458   3            
+ 459   3            led2=0;
+ 460   3            SBUF=tab[16];
+ 461   3            Delay5ms();
+ 462   3            led2=1;
+ 463   3            SBUF=0xff;
+ 464   3          }
+ 465   2        }
+ 466   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    796    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     16    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
